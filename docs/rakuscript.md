@@ -20,7 +20,7 @@ Create a new character with this char_tag and char_name
 
 Create a new variable with this var_name and this value assigned.
 
-A var_name should be 2 or more characters long (Issue is already opened [[#93|https://github.com/rakugoteam/Rakugo/issues/93]])
+A var_name should be 2 or more characters long (Issue is already opened [https://github.com/rakugoteam/Rakugo/issues/93] and we work on fixing it).
 
 If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
 
@@ -52,13 +52,13 @@ If this variable already exist on this character, value is replaced by new one.
 ## Say
 ```[char_tag] [String]```
 
-Character with this char_tag say [String]
+Character with this char_tag say *String*
 
-When Say is executed, a signal [[say|Rakugo-Singleton#say-characterdictionary-textstring]] is send with dictionary of data for the character with this char_tag and this String in parameter.
+When Say is executed, a signal [say] is send with dictionary of data for the character with this char_tag and this String in parameter.
 
 If no character with this char_tag is found, signal is send with an empty dictionary.
 
-After Say is executed, Rakugo automatically waiting, it send a [[step|Rakugo-singleton#step]] signal.
+After Say is executed, Rakugo automatically waiting, it send a [step] signal.
 
 ##### Example
 
@@ -66,9 +66,9 @@ After Say is executed, Rakugo automatically waiting, it send a [[step|Rakugo-sin
 ### No character
 ```[String]```
 
-Say [String]
+Say *String*
 
-When Say is executed, a signal [[say|Rakugo-Singleton#say-characterdictionary-textstring]] is send with empty dictionary and this String in parameter.
+When Say is executed, a signal [say] is send with empty dictionary and this String in parameter.
 
 ##### Example
 
@@ -76,7 +76,7 @@ When Say is executed, a signal [[say|Rakugo-Singleton#say-characterdictionary-te
 ### Use variables
 ```<[var_name]> or <[char_tag].[var_name]>```
 
-You can use variables in Say, Rakugo replace them by their values in String before send signal [[say|Rakugo-Singleton#say-characterdictionary-textstring]].
+You can use variables in Say, Rakugo replace them by their values in String before send signal [say].
 
 ##### Example
 
@@ -90,3 +90,7 @@ After a Menu is read, Rakugo automatically waiting a user interaction, so it sen
 ## Jump
 ### Jump If
 ## Full Example
+
+[#93]: https://github.com/rakugoteam/Rakugo/issues/93
+[say]: rakugo_singleton.md#say-characterdictionary-textstring
+[step]: rakugo_singleton.md#step
