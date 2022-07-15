@@ -7,16 +7,25 @@ You can use with **RakuScriptDialogue** node or using:
 Rakugo.parse_script("path/to/raku_script.rk")
 ```
 
+## Full Example
+
 ## Character
+
 ```character [char_tag] [char_name]```
 
-Create a new character with this char_tag and char_name
+Call `Rakugo.define_character(char_tag, char_name)`.
+
+Create/Define a new character with this char_tag and char_name
 
 ##### Example
 
 ```character Gd Godot```
+
 ## Variable
+
 ```[var_name] = [value] or [other_var_name] or [char_tag].[var_name]```
+
+Call `Rakugo.set_variable(var_name, value)`
 
 Create a new variable with this var_name and this value assigned.
 
@@ -33,7 +42,9 @@ If this variable already exist, value is replaced by new one.
 ```life = max_life```
 
 ```life = Gd.max_life```
+
 ## Character's variable
+
 ```[char_tag].[var_name] = [value] or [other_var_name] or [char_tag].[var_name]```
 
 Create a new variable with this var_name on character with this char_tag, and this value assigned.
@@ -49,7 +60,9 @@ If this variable already exist on this character, value is replaced by new one.
 ```Gd.friendship = max_friendship```
 
 ```Gd.friendship = Gd.max_friendship```
+
 ## Say
+
 ```[char_tag] [String]```
 
 Character with this char_tag say *String*
@@ -63,7 +76,9 @@ After Say is executed, Rakugo automatically waiting, it send a [step] signal.
 ##### Example
 
 ```Gd "Hello !"```
+
 ### No character
+
 ```[String]```
 
 Say *String*
@@ -73,7 +88,9 @@ When Say is executed, a signal [say] is send with empty dictionary and this Stri
 ##### Example
 
 ```"Hello, world !"```
+
 ### Use variables
+
 ```<[var_name]> or <[char_tag].[var_name]>```
 
 You can use variables in Say, Rakugo replace them by their values in String before send signal [say].
@@ -81,15 +98,17 @@ You can use variables in Say, Rakugo replace them by their values in String befo
 ##### Example
 
 ```"My name is <Gd.name>, and I have <life> point of life"```
+
 ## Ask
-After a Ask is read, Rakugo automatically waiting a user interaction, so it send a step signal.
+
+After a Ask is executed, Rakugo waiting call of [ask_return].
 
 ## Menu
-After a Menu is read, Rakugo automatically waiting a user interaction, so it send a step signal.
+
+After a Menu is executed, Rakugo waiting call of [ask_return].
 
 ## Jump
 ### Jump If
-## Full Example
 
 [#93]: https://github.com/rakugoteam/Rakugo/issues/93
 [say]: rakugo_singleton.md#say-characterdictionary-textstring
