@@ -20,7 +20,7 @@ Create a new character with this char_tag and char_name
 
 Create a new variable with this var_name and this value assigned.
 
-A var_name should be 2 or more characters long (Issue is already opened [https://github.com/rakugoteam/Rakugo/issues/93] and we work on fixing it).
+A var_name should be 2 or more characters long ( [Issue is already opened and we work on fixing it](https://github.com/rakugoteam/Rakugo/issues/93) ).
 
 If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
 
@@ -94,3 +94,5 @@ After a Menu is read, Rakugo automatically waiting a user interaction, so it sen
 [#93]: https://github.com/rakugoteam/Rakugo/issues/93
 [say]: rakugo_singleton.md#say-characterdictionary-textstring
 [step]: rakugo_singleton.md#step
+[Say]: rakuscript.md#say
+[ask_return]: rakuscript.md#ask_return
