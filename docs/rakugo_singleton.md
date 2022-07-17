@@ -99,6 +99,20 @@ func _on_menu(choices:Array):
   prints("menu", choices)
 ```
 
+### execute_script_finished
+
+args: (script_name:String)
+
+Send when a script execution is finished.
+
+```gd
+func _ready():
+  Rakugo.connect("execute_script_finished", self, "_on_execute_script_finished")
+  
+func _on_execute_script_finished(script_name:String):
+  prints("execute_script_finished", script_name)
+```
+
 ### parser_unhandled_regex
 
 params: (key:String, result:RegExMatch)
