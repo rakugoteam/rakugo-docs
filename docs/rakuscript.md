@@ -1,117 +1,273 @@
-# RakuScript
+# Rakugo Singleton
 
-**RakuScript** is Rakugo Dialogue scripting language inspired by Ren'Py Scripting Language.
+Rakugo is automatically setup as a singleton when you turn on the Rakugo addon.
+This means that you can call Rakugo from anywhere in your code.
 
-You can use with **RakuScriptDialogue** node or using:
+# Full Exemple
+
+Here is Full Exemple how can you make node connect to Rakugo Core that parse and execute RakuScript:
+
 ```gdscript
-Rakugo.parse_script("path/to/raku_script.rk")
+extends Node
+
+const file_path = "res://Timeline.rk"
+
+func _ready():
+  Rakugo.parser_add_regex_at_runtime("HW", "^hello_world$")
+	
+  Rakugo.connect("parser_unhandled_regex", self, "_on_parser_unhandled_regex")
+  Rakugo.connect("say", self, "_on_say")
+  Rakugo.connect("step", self, "_on_step")
+  Rakugo.connect("ask", self, "_on_ask")
+  Rakugo.connect("menu", self, "_on_menu")
+	
+  Rakugo.parse_and_execute_script(file_path)
+
+func _on_say(character:Dictionary, text:String):
+  prints("say", character.get("name", "null"), text)
+
+func _on_step():
+  prints("Press 'Enter' to continue...")
+	
+func _on_ask(character:Dictionary, question:String, default_answer:String):
+  prints("ask", character.get("name", "null"), question, default_answer)
+
+func _on_menu(choices:Array):
+  prints("menu", choices)
+	
+func _on_parser_unhandled_regex(key:String, result:RegExMatch):
+  match(key):
+    "HW":
+      prints("regex hello, world !")
+
+func _process(delta):
+  if Rakugo.is_waiting_step() and Input.is_action_just_pressed("ui_accept"):
+    Rakugo.do_step()
+		
+  if Rakugo.is_waiting_ask_return() and Input.is_action_just_pressed("ui_up"):
+    Rakugo.ask_return("Bob")
+		
+  if Rakugo.is_waiting_menu_return() and Input.is_action_just_pressed("ui_down"):
+    Rakugo.menu_return(0)
 ```
 
-## Full Example
+# References
+## Signals
+### say
 
-## Character
+params: (character:Dictionary, text:String)
 
-```character [char_tag] [char_name]```
+Send when a [Say] instruction is executed then Rakugo waiting call of [do_step]
 
-Call `Rakugo.define_character(char_tag, char_name)`.
+```gd
+func _ready():
+  Rakugo.connect("say", self, "_on_say")
+  
+func _on_say(character:Dictionary, text:String):
+  prints("say", character.get("name", "null"), text)
+```
 
-Create/Define a new character with this char_tag and char_name
+### step
 
-##### Example
+Send after a [Say] instruction is executed.
 
-```character Gd Godot```
+### ask
 
-## Variable
+params: (character:Dictionary, question:String, default_answer:String)
 
-```[var_name] = [value] or [other_var_name] or [char_tag].[var_name]```
+Send when a [Ask] instruction is executed then Rakugo waiting call of [ask_return].
 
-Call `Rakugo.set_variable(var_name, value)`
+```gd
+func _ready():
+  Rakugo.connect("ask", self, "_on_ask")
+  
+func _on_ask(character:Dictionary, question:String, default_answer:String):
+  prints("ask", character.get("name", "null"), question, default_answer)
+```
 
-Create a new variable with this var_name and this value assigned.
+### menu
 
-A var_name should be 2 or more characters long ( [Issue is already opened and we work on fixing it](https://github.com/rakugoteam/Rakugo/issues/93) ).
+params: (choices:Array)
 
-If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
+Send when a [Menu] instruction is executed then Rakugo waiting call of [menu_return].
 
-If this variable already exist, value is replaced by new one.
+```gd
+func _ready():
+  Rakugo.connect("menu", self, "_on_menu")
+  
+func _on_menu(choices:Array):
+  prints("menu", choices)
+```
 
-##### Example
+### parser_unhandled_regex
 
-```life = 5```
+params: (key:String, result:RegExMatch)
 
-```life = max_life```
+## Methods
 
-```life = Gd.max_life```
+### set_variable
 
-## Character's variable
+params: (var_name:String, value:Variant)
 
-```[char_tag].[var_name] = [value] or [other_var_name] or [char_tag].[var_name]```
+```gdscript
+# set or create a global variable
+Rakugo.set_variable("life", 5)
 
-Create a new variable with this var_name on character with this char_tag, and this value assigned.
+# set or create a variable on character
+Rakugo.set_variable("Sy.life", 5)
+```
 
-If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
+### get_variable
 
-If this variable already exist on this character, value is replaced by new one.
+params: (var_name:String)
+return: Variant
 
-##### Example
+```gdscript
+# get a global variable
+var life = Rakugo.get_variable("life")
 
-```Gd.friendship = 5```
+# get a character's variable
+var sy_life = Rakugo.get_variable("Sy.life")
+```
 
-```Gd.friendship = max_friendship```
+### has_variable
 
-```Gd.friendship = Gd.max_friendship```
+params: (var_name:String)
+return: bool
 
-## Say
+Only works with global variable.
 
-```[char_tag] [String]```
+### define_character
 
-Character with this char_tag say *String*
+params: (char_tag:String, char_name:String)
 
-When Say is executed, a signal [say] is send with dictionary of data for the character with this char_tag and this String in parameter.
+```gdscript
+# define/create a new character
+Rakugo.define_character("Sy", "Sylvie")
+```
 
-If no character with this char_tag is found, signal is send with an empty dictionary.
+### get_character
 
-After Say is executed, Rakugo automatically waiting, it send a [step] signal.
+params: (char_tag:string)
+return: Dictionary
 
-##### Example
+If a character with this char_tag is not found return an empty Dictionary and print an error.
 
-```Gd "Hello !"```
+```gd
+var sy = Rakugo.get_character("Sy")
+```
 
-### No character
+### get_narrator
 
-```[String]```
+return: Dictionary
 
-Say *String*
+Returns character with name defined in **Project Settings**: *addons/rakugo/narrator/name*
 
-When Say is executed, a signal [say] is send with empty dictionary and this String in parameter.
+### parser_add_regex_at_runtime
 
-##### Example
+params: (key:String, regex:String)
 
-```"Hello, world !"```
+### parse_script
 
-### Use variables
+params: (file_path:String)
+return: Error
 
-```<[var_name]> or <[char_tag].[var_name]>```
+Parse a script and store it. You can execute it with [execute_script].
 
-You can use variables in Say, Rakugo replace them by their values in String before send signal [say].
+If all goes well return OK. If not print an error and return ERR_FILE_CANT_OPEN if file can not be opened, or FAILED in other cases.
 
-##### Example
+```gd
+const file_path = "res://Timeline.rk"
 
-```"My name is <Gd.name>, and I have <life> point of life"```
+func _ready():
+  Rakugo.parse_script(file_path)
+```
 
-## Ask
+### execute_script
 
-After a Ask is executed, Rakugo waiting call of [ask_return].
+params: (file_name:String)
+return: Error
 
-## Menu
+Execute a script previously registered with [parse_script].
 
-After a Menu is executed, Rakugo waiting call of [ask_return].
+If all goes well return OK, print an error and return FAILED instead.
 
-## Jump
-### Jump If
+file_name, is file_path without folder_path and extension.
 
-[#93]: https://github.com/rakugoteam/Rakugo/issues/93
-[say]: rakugo_singleton.md#say-characterdictionary-textstring
-[step]: rakugo_singleton.md#step
+file_path: "res://Timeline.rk"
+
+file_name: "Timeline"
+
+You can use file_path.get_file().get_basename().
+
+You do not have to use parse_script and execute_script at same time.
+
+```gdscript
+const file_path = "res://Timeline.rk"
+const file_name = file_path.get_file().get_basename()
+
+func _ready():
+  Rakugo.parse_script(file_path)
+
+func _process(_delta):
+  ...
+  Rakugo.execute_script(file_name)
+```
+
+### parse_and_execute_script
+
+params: (file_path:String)
+
+Do [parse_script] and [execute_script] at same time.
+
+### save_game
+
+params: (save_name:String = "quick")
+
+Save all variables and characters in *user://save/save_name/save.json* file.
+
+#### load_game
+
+params: (save_name:String = "quick")
+
+Load all variables and characters from *user://save/save_name/save.json* file if existed.
+
+#### is_waiting_step
+
+return: bool
+
+Returns true when Rakugo waiting call of [do_step].
+
+### do_step
+
+Use it when [is_waiting_step] return true, to continue script reading process.
+
+### is_waiting_ask_return
+
+return: bool
+
+Returns true when Rakugo waiting call of [ask_return].
+
+### ask_return
+
+params: (result:Variant)
+
+### is_waiting_menu_return
+
+return: bool
+
+Returns true when Rakugo waiting call of [menu_return].
+
+### menu_return
+
+params: (index:int)
+
 [Say]: rakuscript.md#say
+[do_step]: rakugo_singleton.md#do_step
+[Ask]: rakuscript.md#ask
 [ask_return]: rakuscript.md#ask_return
+[Menu]: rakuscript.md#menu
+[menu_return]: rakuscript.md#menu_return
+[parse_script]: rakugo_singleton.md#parse_script
+[execute_script]: rakugo_singleton.md#execute_script
+[is_waiting_step]: rakugo_singleton.md#is_waiting_step
