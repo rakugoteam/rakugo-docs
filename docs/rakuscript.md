@@ -13,8 +13,10 @@ Rakugo.parse_script("path/to/raku_script.rk")
 
 ```character [char_tag] [char_name]```
 
-Call `Rakugo.define_character(char_tag, char_name)`.
-
+Equivalent in GDScript:
+```gdscript
+Rakugo.define_character(char_tag, char_name)
+```
 Create/Define a new character with this char_tag and char_name
 
 ##### Example
@@ -25,7 +27,10 @@ Create/Define a new character with this char_tag and char_name
 
 ```[var_name] = [value] or [other_var_name] or [char_tag].[var_name]```
 
-Call `Rakugo.set_variable(var_name, value)`
+Equivalent in GDScript:
+```gdscript
+Rakugo.set_variable(var_name, value)
+```
 
 Create a new variable with this var_name and this value assigned.
 
