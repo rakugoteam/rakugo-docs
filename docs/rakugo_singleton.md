@@ -13,13 +13,13 @@ extends Node
 const file_path = "res://Timeline.rk"
 
 func _ready():
-  Rakugo.parser_add_regex_at_runtime("HW", "^hello_world$")
+  Rakugo.add_custom_regex("HW", "^hello_world$")
 	
-  Rakugo.connect("parser_unhandled_regex", self, "_on_parser_unhandled_regex")
-  Rakugo.connect("say", self, "_on_say")
-  Rakugo.connect("step", self, "_on_step")
-  Rakugo.connect("ask", self, "_on_ask")
-  Rakugo.connect("menu", self, "_on_menu")
+  Rakugo.sg_custom_regex.connect(_on_custom_regex)
+  Rakugo.sg_say.connect(_on_say)
+  Rakugo.sg_step.connect(_on_step)
+  Rakugo.sg_ask.connect(_on_ask)
+  Rakugo.sg_menu.connect(_on_menu)
 	
   Rakugo.parse_and_execute_script(file_path)
 
@@ -35,10 +35,8 @@ func _on_ask(character:Dictionary, question:String, default_answer:String):
 func _on_menu(choices:Array):
   prints("menu", choices)
 	
-func _on_parser_unhandled_regex(key:String, result:RegExMatch):
-  match(key):
-    "HW":
-      prints("regex hello, world !")
+func _on_custom_regex(key:String, result:RegExMatch):
+  prints("custom regex", key, result.strings)
 
 func _process(delta):
   if Rakugo.is_waiting_step() and Input.is_action_just_pressed("ui_accept"):
@@ -51,71 +49,136 @@ func _process(delta):
     Rakugo.menu_return(0)
 ```
 
+# file_path and script_name
+
+`file_path` is a path to a file, like : "res://Timeline.rk".
+
+`script_name` is file name without extension. From "res://Timeline.rk" it is "Timeline".
+
+It works in Rakugo like bellow :
+```gd
+var file_path = "res://Timeline.rk"
+
+var script_name = file_path.get_file().get_basename()
+```
+
+Only methods [parse_script] or [parse_and_execute_script], use a file_path. For others and signals is a script_name.
+
 # References
 ## Signals
-### say
+### sg_say
 
-params: (character:Dictionary, text:String)
+args: (character:Dictionary, text:String)
 
 Send when a [Say] instruction is executed then Rakugo waiting call of [do_step]
 
 ```gd
 func _ready():
-  Rakugo.connect("say", self, "_on_say")
+  Rakugo.sg_say.connect(_on_say)
   
 func _on_say(character:Dictionary, text:String):
   prints("say", character.get("name", "null"), text)
 ```
 
-### step
+### sg_step
 
 Send after a [Say] instruction is executed.
 
-### ask
+```gd
+func _ready():
+  Rakugo.sg_step.connect(_on_step)
 
-params: (character:Dictionary, question:String, default_answer:String)
+func _on_step():
+  prints("Press 'Enter' to continue...")
+```
+
+### sg_ask
+
+args: (character:Dictionary, question:String, default_answer:String)
 
 Send when a [Ask] instruction is executed then Rakugo waiting call of [ask_return].
 
 ```gd
 func _ready():
-  Rakugo.connect("ask", self, "_on_ask")
+  Rakugo.sg_ask.connect(_on_ask)
   
 func _on_ask(character:Dictionary, question:String, default_answer:String):
   prints("ask", character.get("name", "null"), question, default_answer)
 ```
 
-### menu
+### sg_menu
 
-params: (choices:Array)
+args: (choices:Array)
 
 Send when a [Menu] instruction is executed then Rakugo waiting call of [menu_return].
 
 ```gd
 func _ready():
-  Rakugo.connect("menu", self, "_on_menu")
+  Rakugo.sg_menu.connect(_on_menu)
   
-func _on_menu(choices:Array):
+func _on_menu(choices:PackedStringArray):
   prints("menu", choices)
 ```
 
-### execute_script_finished
+### sg_execute_script_start
 
 args: (script_name:String)
 
-Send when a script execution is finished.
+Send when the script with this `script_name` execution is started.
 
 ```gd
 func _ready():
-  Rakugo.connect("execute_script_finished", self, "_on_execute_script_finished")
+  Rakugo.sg_execute_script_start.connect(_on_execute_script_start)
   
-func _on_execute_script_finished(script_name:String):
+func _on_execute_script_start(script_name:String):
+  prints("execute_script_start", script_name)
+```
+
+### sg_execute_script_finished
+
+args: (script_name:String, error_str:String)
+
+Send when the script with this `script_name` execution is finished.
+
+If execution fail `error_str` contains error message, instead is empty.
+
+```gd
+func _ready():
+  Rakugo.sg_execute_script_finished.connect(_on_execute_script_finished)
+  
+func _on_execute_script_finished(script_name:String, error_str:String):
   prints("execute_script_finished", script_name)
 ```
 
-### parser_unhandled_regex
+### sg_custom_regex
 
-params: (key:String, result:RegExMatch)
+args: (key:String, result:RegExMatch)
+
+Send when a custom instruction is executed.
+
+You can add one with [add_custom_regex].
+
+```gd
+func _ready():
+  Rakugo.sg_custom_regex.connect(_on_custom_regex)
+
+func _on_custom_regex(key:String, result:RegExMatch):
+  match(key):
+    "HW":
+      prints("regex hello, world !")
+```
+
+### sg_variable_changed
+
+args : (var_name:String, value:Variant)
+
+Send when a Rakugo's variable is changed.
+
+### sg_character_variable_changed
+
+args : (character_tag:String, var_name:String, value:Variant)
+
+Send when a Rakugo's character variable is changed.
 
 ## Methods
 
@@ -136,6 +199,8 @@ Rakugo.set_variable("Sy.life", 5)
 params: (var_name:String)
 return: Variant
 
+Return `null` if not found or character with this tag does not exist. Print an error in this case.
+
 ```gdscript
 # get a global variable
 var life = Rakugo.get_variable("life")
@@ -149,14 +214,21 @@ var sy_life = Rakugo.get_variable("Sy.life")
 params: (var_name:String)
 return: bool
 
-Only works with global variable.
+Return `false` if not found or character with this tag does not exist. Print an error in this case.
+
+```gdscript
+# check if a global variable exists
+var has_life = Rakugo.has_variable("life")
+
+# check if a character's variable exists
+var has_sy_life = Rakugo.has_variable("Sy.life")
+```
 
 ### define_character
 
 params: (char_tag:String, char_name:String)
 
 ```gdscript
-# define/create a new character
 Rakugo.define_character("Sy", "Sylvie")
 ```
 
@@ -177,9 +249,31 @@ return: Dictionary
 
 Returns character with name defined in **Project Settings**: *addons/rakugo/narrator/name*
 
-### parser_add_regex_at_runtime
+### add_custom_regex
 
 params: (key:String, regex:String)
+
+Add new custom instruction to RkScript.
+
+When this custom insctruction is read it send signal [sg_custom_regex].
+
+Use it before [parse_script] or [parse_and_execute_script].
+
+```gd
+func _ready():
+  Rakugo.parser_add_regex_at_runtime("HW", "^hello_world$")
+  ...
+  Rakugo.parse_and_execute_script(file_path)
+```
+You can use these Rakugo tokens in your regex :
+```gd
+NAME = "[a-zA-Z][a-zA-Z_0-9]*",
+NUMERIC = "-?[1-9][0-9.]*",
+STRING = "\".*\"",
+```
+Example : `^show_char (?<tag>{NAME})$`
+
+GDocs about regex : https://docs.godotengine.org/en/stable/classes/class_regex.html
 
 ### parse_script
 
@@ -188,7 +282,7 @@ return: Error
 
 Parse a script and store it. You can execute it with [execute_script].
 
-If all goes well return OK. If not print an error and return ERR_FILE_CANT_OPEN if file can not be opened, or FAILED in other cases.
+If all goes well return `OK`. If not print an error and return `ERR_FILE_CANT_OPEN` if file can not be opened, or `FAILED` in other cases.
 
 ```gd
 const file_path = "res://Timeline.rk"
@@ -199,82 +293,88 @@ func _ready():
 
 ### execute_script
 
-params: (file_name:String)
+params: (script_name:String)
 return: Error
 
 Execute a script previously registered with [parse_script].
 
-If all goes well return OK, print an error and return FAILED instead.
+If all goes well return `OK`, print an error and return `FAILED` instead.
 
-file_name, is file_path without folder_path and extension.
-
-file_path: "res://Timeline.rk"
-
-file_name: "Timeline"
-
-You can use file_path.get_file().get_basename().
-
-You do not have to use parse_script and execute_script at same time.
+You do not have to use [parse_script] and [execute_script] at same time.
 
 ```gdscript
 const file_path = "res://Timeline.rk"
-const file_name = file_path.get_file().get_basename()
+const script_name = file_path.get_file().get_basename()
 
 func _ready():
   Rakugo.parse_script(file_path)
 
 func _process(_delta):
   ...
-  Rakugo.execute_script(file_name)
+  Rakugo.execute_script(script_name)
 ```
 
 ### parse_and_execute_script
 
 params: (file_path:String)
 
-Do [parse_script] and [execute_script] at same time.
+Do [parse_script], if return `OK` then do [execute_script].
 
 ### save_game
 
 params: (save_name:String = "quick")
 
-Save all variables and characters in *user://save/save_name/save.json* file.
+Save all variables, characters, script_name and last line readed on last executed script, in *user://save/save_name/save.json* file.
 
-#### load_game
+### load_game
 
 params: (save_name:String = "quick")
 
-Load all variables and characters from *user://save/save_name/save.json* file if existed.
+Load all variables, characters, script_name and last line readed on last executed script, from *user://save/save_name/save.json* file if existed.
 
-#### is_waiting_step
+Parse the script with `script_name`. To run it use [resume_loaded_script] (just bellow).
+
+### resume_loaded_script
+
+Run the loaded script from last line readed.
+
+### is_waiting_step
 
 return: bool
 
-Returns true when Rakugo waiting call of [do_step].
+Returns `true` when Rakugo waiting call of [do_step].
 
 ### do_step
 
-Use it when [is_waiting_step] return true, to continue script reading process.
+Use it when [is_waiting_step] return `true`, to continue script reading process.
 
 ### is_waiting_ask_return
 
 return: bool
 
-Returns true when Rakugo waiting call of [ask_return].
+Returns `true` when Rakugo waiting call of [ask_return].
 
 ### ask_return
 
 params: (result:Variant)
 
+Use it when [is_waiting_ask_return] return `true`, to continue script reading process.
+
+`result` is the answer to the question ask by [sg_ask].
+
 ### is_waiting_menu_return
 
 return: bool
 
-Returns true when Rakugo waiting call of [menu_return].
+Returns `true` when Rakugo waiting call of [menu_return].
 
 ### menu_return
 
 params: (index:int)
+
+Use it when [is_waiting_menu_return] return `true`, to continue script reading process.
+
+`index` is the index of choosed choice in the choices array given by [sg_menu].
 
 [Say]: rakuscript.md#say
 [do_step]: rakugo_singleton.md#do_step
@@ -283,5 +383,13 @@ params: (index:int)
 [Menu]: rakuscript.md#menu
 [menu_return]: rakuscript.md#menu_return
 [parse_script]: rakugo_singleton.md#parse_script
+[parse_and_execute_script]: rakugo_single#parse_and_execute_script
 [execute_script]: rakugo_singleton.md#execute_script
 [is_waiting_step]: rakugo_singleton.md#is_waiting_step
+[sg_custom_regex]: rakugo_singleton.md#sg_custom_regex
+[sg_ask]: rakugo_singleton.md#sg_ask
+[is_waiting_ask_return]: rakugo_singleton.md#is_waiting_ask_return
+[sg_menu]: rakugo_singleton.md#sg_menu
+[is_waiting_menu_return]: rakugo_singleton.md#is_waiting_menu_return
+[add_custom_regex]: rakugo_singleton.md#add_custom_regex
+[resume_loaded_script]: rakugo_singleton.md#resume_loaded_script
