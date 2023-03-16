@@ -14,5 +14,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mike
+      - run: git config user.name ci-bot
+      - run: git config user.email ci-bot@example.com
       - run: mike deploy 2.0.1 last godot-4.0
       - run: mike mike set-default last
