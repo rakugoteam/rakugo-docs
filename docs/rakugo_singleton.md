@@ -14,13 +14,13 @@ const file_path = "res://Timeline.rk"
 
 func _ready():
   Rakugo.add_custom_regex("HW", "^hello_world$")
-	
+  
   Rakugo.sg_custom_regex.connect(_on_custom_regex)
   Rakugo.sg_say.connect(_on_say)
   Rakugo.sg_step.connect(_on_step)
   Rakugo.sg_ask.connect(_on_ask)
   Rakugo.sg_menu.connect(_on_menu)
-	
+  
   Rakugo.parse_and_execute_script(file_path)
 
 func _on_say(character:Dictionary, text:String):
@@ -28,23 +28,23 @@ func _on_say(character:Dictionary, text:String):
 
 func _on_step():
   prints("Press 'Enter' to continue...")
-	
+  
 func _on_ask(character:Dictionary, question:String, default_answer:String):
   prints("ask", character.get("name", "null"), question, default_answer)
 
 func _on_menu(choices:Array):
   prints("menu", choices)
-	
+  
 func _on_custom_regex(key:String, result:RegExMatch):
   prints("custom regex", key, result.strings)
 
 func _process(delta):
   if Rakugo.is_waiting_step() and Input.is_action_just_pressed("ui_accept"):
     Rakugo.do_step()
-		
+    
   if Rakugo.is_waiting_ask_return() and Input.is_action_just_pressed("ui_up"):
     Rakugo.ask_return("Bob")
-		
+    
   if Rakugo.is_waiting_menu_return() and Input.is_action_just_pressed("ui_down"):
     Rakugo.menu_return(0)
 ```
@@ -56,6 +56,7 @@ func _process(delta):
 `script_name` is file name without extension. From "res://Timeline.rk" it is "Timeline".
 
 It works in Rakugo like bellow :
+
 ```gd
 var file_path = "res://Timeline.rk"
 
@@ -65,7 +66,9 @@ var script_name = file_path.get_file().get_basename()
 Only methods [parse_script] or [parse_and_execute_script], use a file_path. For others and signals is a script_name.
 
 ## References
+
 ### Signals
+
 #### sg_say
 
 args: (character:Dictionary, text:String)
@@ -265,12 +268,15 @@ func _ready():
   ...
   Rakugo.parse_and_execute_script(file_path)
 ```
+
 You can use these Rakugo tokens in your regex :
+
 ```gd
 NAME = "[a-zA-Z][a-zA-Z_0-9]*",
 NUMERIC = "-?[1-9][0-9.]*",
 STRING = "\".*\"",
 ```
+
 Example : `^show_char (?<tag>{NAME})$`
 
 GDocs about regex : https://docs.godotengine.org/en/stable/classes/class_regex.html

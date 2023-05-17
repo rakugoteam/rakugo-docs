@@ -12,6 +12,4 @@ We need to setup ***Variant**/Export Type* as *Threads* in HTML5 export settings
 
 For any type of export, we need add RakuScript  *`*.rk`* files to export settings as by default, only files not recognized by Godot are ignored.
 
-
 ![](https://user-images.githubusercontent.com/7337158/162471020-a9ae8269-6a49-4ab7-a960-79333f35f7c6.png)
-
