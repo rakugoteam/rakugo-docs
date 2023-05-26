@@ -27,7 +27,7 @@ Create/Define a new character with this char_tag and char_name
 
 ## Variable
 
-```python
+```renpy
 # set variable
 [var_name] = [value]
 
@@ -52,17 +52,13 @@ Rakugo.get_variable(char_tag.var_name)
 ```
 
 Create a new variable with this var_name and this value assigned.
-
-A var_name should be 2 or more characters long ( [Issue is already opened and we work on fixing it](https://github.com/rakugoteam/Rakugo/issues/93) ).
-
 If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
-
 If this variable already exist, value is replaced by new one.
 
 ### Variable Example
 
 
-```python
+```renpy
 
 # create / set variable
 life = 5
@@ -77,7 +73,7 @@ life = Gd.max_life
 
 ## Character's variable
 
-```python
+```renpy
 # set variable
 [char_tag].[var_name] = [value]
 
@@ -93,7 +89,7 @@ If this variable already exist on this character, value is replaced by new one.
 
 ### Character's variable example
 
-```python
+```renpy
 # create / set character variable
 Gd.friendship = 5
 
@@ -118,7 +114,7 @@ After Say is executed, Rakugo automatically waiting, it send a [step] signal.
 
 ### Say Example
 
-```python
+```renpy
 Gd "Hello !"
 ```
 
