@@ -3,6 +3,7 @@
 **RakuScript** is Rakugo Dialogue scripting language inspired by Ren'Py Scripting Language.
 
 You can use with **RakuScriptDialogue** node or using:
+
 ```gdscript
 Rakugo.parse_script("path/to/raku_script.rk")
 ```
@@ -14,18 +15,20 @@ Rakugo.parse_script("path/to/raku_script.rk")
 ```character [char_tag] [char_name]```
 
 Equivalent in GDScript:
+
 ```gdscript
 Rakugo.define_character(char_tag, char_name)
 ```
+
 Create/Define a new character with this char_tag and char_name
 
-##### Example
+### Example
 
 ```character Gd Godot```
 
 ## Variable
 
-```python
+```renpy
 # set variable
 [var_name] = [value]
 
@@ -37,6 +40,7 @@ Create/Define a new character with this char_tag and char_name
 ```
 
 Equivalent in GDScript:
+
 ```gdscript
 # set variable
 Rakugo.set_variable(var_name, value)
@@ -56,9 +60,9 @@ If other_var_name or char_tag.var_name is defined, use value of other_var_name o
 
 If this variable already exist, value is replaced by new one.
 
-##### Example
+### Variable Example
 
-```python
+```renpy
 
 # create / set variable
 life = 5
@@ -70,9 +74,10 @@ life = max_life
 life = Gd.max_life
 
 ```
-## Character's variable
 
-```python
+## Character's Variables
+
+```renpy
 # set variable
 [char_tag].[var_name] = [value]
 
@@ -86,9 +91,9 @@ If other_var_name or char_tag.var_name is defined, use value of other_var_name o
 
 If this variable already exist on this character, value is replaced by new one.
 
-##### Example
+### Variables Example
 
-```python
+```renpy
 # create / set character variable
 Gd.friendship = 5
 
@@ -111,9 +116,9 @@ If no character with this char_tag is found, signal is send with an empty dictio
 
 After Say is executed, Rakugo automatically waiting, it send a [step] signal.
 
-##### Example
+### Say Example
 
-```python
+```renpy
 Gd "Hello !"
 ```
 
@@ -125,7 +130,7 @@ Say *String*
 
 When Say is executed, a signal [say] is send with empty dictionary and this String in parameter.
 
-##### Example
+### No character Example
 
 ```"Hello, world !"```
 
@@ -135,23 +140,23 @@ When Say is executed, a signal [say] is send with empty dictionary and this Stri
 
 You can use variables in Say, Rakugo replace them by their values in String before send signal [say].
 
-##### Example
+### Example of use variables
 
-```
+```renpy
 "My name is <Gd.name>, and I have <life> point of life"
 ```
 
 ## Ask
 
-```
+```renpy
 [var_name] = ? [question]
 ```
 
-```
+```renpy
 [var_name] = ? [question] [placeholder]
 ```
 
-```
+```renpy
 [var_name] = ? [character_tag] [question] [placeholder]
 
 ```
@@ -165,9 +170,9 @@ After a Ask is executed, Rakugo waiting call of [ask_return] signal:
 Rakugo.ask_return(answer)
 ```
 
-### Example
+### Ask Examples
 
-```
+```renpy
 player.name = ? "What is your name ?"
 player.age = ? "How old are you ?"
 ```
@@ -177,7 +182,17 @@ player.age = ? "How old are you ?"
 It can be used to create a ui that switches between different branches
 of dialogue tree.
 
-**WIP**
+```renpy
+menu menu_emily:
+  "Talk with emily" > emily_talk
+  "Wait"
+  "Blop" > test_dialog
+
+```
+
+It must start it from menu menu_name:
+`"Choice"` - is choice and `>` is used to jump to other dialog/label or menu.
+Menu block ends with empty line.
 
 After a Menu is executed, Rakugo waiting call of [ask_menu] signal:
 
@@ -187,15 +202,15 @@ Rakugo.ask_menu(branch_index)
 
 ## Jump
 
-```
+```renpy
 jump [label_name] or jump [menu_label_name]
 ```
 
 It will jump dialogue branch with given label_name or menu_label_name.
 
-### Example
+### Jump Example
 
-```
+```renpy
 jump start
 
 jump shop_menu
@@ -203,23 +218,20 @@ jump shop_menu
 
 ### Jump If
 
-```
+```renpy
 jump [label_name] if [condition]
 ```
 
 It will jump dialogue branch with given
 label_name or menu_label_name if condition is true.
 
-### Example
+### Jump If Example
 
-```
+```renpy
 jump emily_date if emily.relationship >= 20
 ```
 
-
-[#93]: https://github.com/rakugoteam/Rakugo/issues/93
 [say]: rakugo_singleton.md#say-characterdictionary-textstring
 [step]: rakugo_singleton.md#step
-[Say]: rakuscript.md#say
 [ask_return]: rakuscript.md#ask_return
 [ask_menu]: rakuscript.md#ask_menu
