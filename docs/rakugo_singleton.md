@@ -163,7 +163,10 @@ You can add one with [add_custom_regex].
 
 ```gd
 func _ready():
+  Rakugo.parser_add_regex_at_runtime("HW", "^hello_world$")
   Rakugo.sg_custom_regex.connect(_on_custom_regex)
+  ...
+  Rakugo.parse_and_execute_script(file_path)
 
 func _on_custom_regex(key:String, result:RegExMatch):
   match(key):
@@ -265,8 +268,14 @@ Use it before [parse_script] or [parse_and_execute_script].
 ```gd
 func _ready():
   Rakugo.parser_add_regex_at_runtime("HW", "^hello_world$")
+  Rakugo.sg_custom_regex.connect(_on_custom_regex)
   ...
   Rakugo.parse_and_execute_script(file_path)
+
+func _on_custom_regex(key:String, result:RegExMatch):
+  match(key):
+    "HW":
+      prints("regex hello, world !")
 ```
 
 You can use these Rakugo tokens in your regex :

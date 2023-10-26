@@ -20,6 +20,8 @@
 - After a [Say], [Ask] or [Menu] instruction is read,
  Rakugo stop reading the script and waits for user input.
 
+- For now there is need a [workaround for changing variables in RakuScript]
+
 
 [Rakugo Singleton]: rakugo_singleton.md
 [RakuScript]: rakuscript.md
@@ -27,3 +29,4 @@
 [Say]: rakuscript.md#say
 [Ask]: rakuscript.md#ask
 [Menu]: rakuscript.md#menu
+[workaround for changing variables in RakuScript]:rakugo_variables_workaround.md

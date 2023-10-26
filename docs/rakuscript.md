@@ -52,8 +52,9 @@ Rakugo.get_variable(char_tag.var_name)
 ```
 
 Create a new variable with this var_name and this value assigned.
-If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
+If `other_var_name` or `char_tag.var_name` is defined, use value of `other_var_name` or `char_tag.var_name`.
 If this variable already exist, value is replaced by new one.
+To change variables values in RakuScript you need to use [workaround].
 
 ### Variable Example
 
@@ -235,3 +236,4 @@ jump emily_date if emily.relationship >= 20
 [step]: rakugo_singleton.md#step
 [ask_return]: rakuscript.md#ask_return
 [ask_menu]: rakuscript.md#ask_menu
+[workaround]:rakugo_variables_workaround.md
