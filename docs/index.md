@@ -2,10 +2,12 @@
 
 ## About
 
-**Rakugo Dialogue System** provide:
+**Rakugo Dialogue System** provides:
 
 - Save/Load system
 - Dialog system using RakuScript language inspired by Ren'Py Scripting Langue
+- Global variables available from both RakuScript and GDScript levels
+- Global characters variables available from both RakuScript and GDScript levels
 
 ## Learn
 
