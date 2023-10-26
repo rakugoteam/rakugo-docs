@@ -6,7 +6,7 @@ Now there is problem that you need to use GDScript to change those vars,
 as in RakuScript you can only overwrite them, but we working on it.
 ```renpy
 a = 10
-a += 1 # and other mod operations dosen't work - error
+a += 1 # and other mod operations doesn't work - error
 a = 11 # works
 ```
 
