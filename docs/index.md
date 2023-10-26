@@ -1,8 +1,8 @@
-# Welcome to the Rakugo Core Docs
+# Welcome to the Rakugo Dialogue System Docs
 
 ## About
 
-**Rakugo Core** is core of Rakugo Project is a:
+**Rakugo Dialogue System** provide:
 
 - Save/Load system
 - Dialog system using RakuScript language inspired by Ren'Py Scripting Langue

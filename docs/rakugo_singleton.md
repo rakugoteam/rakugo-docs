@@ -5,7 +5,7 @@ This means that you can call Rakugo from anywhere in your code.
 
 ## Full Exemple
 
-Here is Full Exemple how can you make node connect to Rakugo Core that parse and execute RakuScript:
+Here is Full Exemple how can you make node connect to Rakugo Dialogue System that parse and execute RakuScript:
 
 ```gdscript
 extends Node
