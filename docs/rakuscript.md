@@ -47,7 +47,7 @@ Rakugo.set_variable(var_name, value)
 # get variable
 Rakugo.get_variable(other_var_name)
 
- # get variable from character
+# get variable from character
 Rakugo.get_variable(char_tag.var_name)
 ```
 

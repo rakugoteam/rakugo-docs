@@ -13,18 +13,21 @@
 
 - how to use [Rakugo Singleton]
 - how to make script in [RakuScript]
+- how to run RakuScript using [RakuScriptDialogue]
+- how to use [RkVars] in GDScript and RakuScript
 - how setup [export] for Godot project that use Rakugo
 
 ## Things you need to know
 
 - After a [Say], [Ask] or [Menu] instruction is read,
- Rakugo stop reading the script and waits for user input.
+	Rakugo stop reading the script and waits for user input.
 
 - For now there is need a [workaround for changing variables in RakuScript]
 
-
 [Rakugo Singleton]: rakugo_singleton.md
 [RakuScript]: rakuscript.md
+[RakuScriptDialogue]: rakuscript_dialogue.md
+[RkVars]: rkvars.md
 [export]: export.md
 [Say]: rakuscript.md#say
 [Ask]: rakuscript.md#ask
