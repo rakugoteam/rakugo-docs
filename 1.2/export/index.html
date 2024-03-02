@@ -20,7 +20,7 @@
     
     
       
-        <title>How to Setup Export for Godot project that use Rakugo - Rakugo Dialogue System Docs</title>
+        <title>How to Setup Export for Godot project that use Rakugo - Rakugo Docs</title>
       
     
     
@@ -91,7 +91,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="https://rakugoteam.github.io" title="Rakugo Dialogue System Docs" class="md-header__button md-logo" aria-label="Rakugo Dialogue System Docs" data-md-component="logo">
+    <a href="https://rakugoteam.github.io" title="Rakugo Docs" class="md-header__button md-logo" aria-label="Rakugo Docs" data-md-component="logo">
       
   <img src="../logo.svg" alt="logo">
 
@@ -104,7 +104,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Rakugo Dialogue System Docs
+            Rakugo Docs
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -216,12 +216,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="https://rakugoteam.github.io" title="Rakugo Dialogue System Docs" class="md-nav__button md-logo" aria-label="Rakugo Dialogue System Docs" data-md-component="logo">
+    <a href="https://rakugoteam.github.io" title="Rakugo Docs" class="md-nav__button md-logo" aria-label="Rakugo Docs" data-md-component="logo">
       
   <img src="../logo.svg" alt="logo">
 
     </a>
-    Rakugo Dialogue System Docs
+    Rakugo Docs
   </label>
   
     <div class="md-nav__source">
@@ -248,7 +248,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome to the Rakugo Dialogue System Docs
+    Welcome to the Rakugo Core Docs !
   </span>
   
 
@@ -272,6 +272,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How to Setup Export for Godot project that use Rakugo
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -281,6 +292,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#html-5-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML 5 Export
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Exports
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -311,68 +359,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../rakugo_variables_workaround/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rakugo Variables Workaround
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../rakuscript/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     RakuScript
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rakuscript_dialogue/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    RakuScriptDialogue
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rkvars/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How use Rakugo Variables
   </span>
   
 
@@ -401,6 +392,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#html-5-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML 5 Export
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#all-exports" class="md-nav__link">
+    <span class="md-ellipsis">
+      All Exports
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -418,8 +435,13 @@
 
 
 <h1 id="how-to-setup-export-for-godot-project-that-use-rakugo">How to Setup Export for Godot project that use Rakugo</h1>
+<h2 id="html-5-export">HTML 5 Export</h2>
+<p>There is problem with HTML 5 export of Rakugo for Firefox: https://itch.io/post/5713938</p>
+<p>We need to setup <em><strong>Variant</strong>/Export Type</em> as <em>Threads</em> in HTML5 export settings.</p>
+<p><img alt="" src="https://user-images.githubusercontent.com/7337158/162470941-c30307a3-30a9-4ba0-8908-d7d9c0bde6b8.png" /></p>
+<h2 id="all-exports">All Exports</h2>
 <p>For any type of export, we need add RakuScript  <em><code>*.rk</code></em> files to export settings as by default, only files not recognized by Godot are ignored.</p>
-<p><img alt="" src="../export-resources.png" /></p>
+<p><img alt="" src="https://user-images.githubusercontent.com/7337158/162471020-a9ae8269-6a49-4ab7-a960-79333f35f7c6.png" /></p>
 
 
 
