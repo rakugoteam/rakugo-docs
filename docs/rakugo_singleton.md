@@ -14,13 +14,13 @@ const file_path = "res://Timeline.rk"
 
 func _ready():
   Rakugo.add_custom_regex("HW", "^hello_world$")
-  
+
   Rakugo.sg_custom_regex.connect(_on_custom_regex)
   Rakugo.sg_say.connect(_on_say)
   Rakugo.sg_step.connect(_on_step)
   Rakugo.sg_ask.connect(_on_ask)
   Rakugo.sg_menu.connect(_on_menu)
-  
+
   Rakugo.parse_and_execute_script(file_path)
 
 func _on_say(character:Dictionary, text:String):
@@ -28,23 +28,23 @@ func _on_say(character:Dictionary, text:String):
 
 func _on_step():
   prints("Press 'Enter' to continue...")
-  
+
 func _on_ask(character:Dictionary, question:String, default_answer:String):
   prints("ask", character.get("name", "null"), question, default_answer)
 
 func _on_menu(choices:Array):
   prints("menu", choices)
-  
+
 func _on_custom_regex(key:String, result:RegExMatch):
   prints("custom regex", key, result.strings)
 
 func _process(delta):
   if Rakugo.is_waiting_step() and Input.is_action_just_pressed("ui_accept"):
     Rakugo.do_step()
-    
+
   if Rakugo.is_waiting_ask_return() and Input.is_action_just_pressed("ui_up"):
     Rakugo.ask_return("Bob")
-    
+
   if Rakugo.is_waiting_menu_return() and Input.is_action_just_pressed("ui_down"):
     Rakugo.menu_return(0)
 ```
@@ -78,7 +78,7 @@ Send when a [Say] instruction is executed then Rakugo waiting call of [do_step]
 ```gd
 func _ready():
   Rakugo.sg_say.connect(_on_say)
-  
+
 func _on_say(character:Dictionary, text:String):
   prints("say", character.get("name", "null"), text)
 ```
@@ -104,7 +104,7 @@ Send when a [Ask] instruction is executed then Rakugo waiting call of [ask_retur
 ```gd
 func _ready():
   Rakugo.sg_ask.connect(_on_ask)
-  
+
 func _on_ask(character:Dictionary, question:String, default_answer:String):
   prints("ask", character.get("name", "null"), question, default_answer)
 ```
@@ -118,7 +118,7 @@ Send when a [Menu] instruction is executed then Rakugo waiting call of [menu_ret
 ```gd
 func _ready():
   Rakugo.sg_menu.connect(_on_menu)
-  
+
 func _on_menu(choices:PackedStringArray):
   prints("menu", choices)
 ```
@@ -132,7 +132,7 @@ Send when the script with this `script_name` execution is started.
 ```gd
 func _ready():
   Rakugo.sg_execute_script_start.connect(_on_execute_script_start)
-  
+
 func _on_execute_script_start(script_name:String):
   prints("execute_script_start", script_name)
 ```
@@ -148,7 +148,7 @@ If execution fail `error_str` contains error message, instead is empty.
 ```gd
 func _ready():
   Rakugo.sg_execute_script_finished.connect(_on_execute_script_finished)
-  
+
 func _on_execute_script_finished(script_name:String, error_str:String):
   prints("execute_script_finished", script_name)
 ```
@@ -261,7 +261,7 @@ params: (key:String, regex:String)
 
 Add new custom instruction to RkScript.
 
-When this custom insctruction is read it send signal [sg_custom_regex].
+When this custom instruction is read it send signal [sg_custom_regex].
 
 Use it before [parse_script] or [parse_and_execute_script].
 
@@ -392,19 +392,19 @@ Use it when [is_waiting_menu_return] return `true`, to continue script reading p
 `index` is the index of choosed choice in the choices array given by [sg_menu].
 
 [Say]: rakuscript.md##say
-[do_step]: rakugo_singleton.md##do_step
+[do_step]: ##do_step
 [Ask]: rakuscript.md##ask
 [ask_return]: rakuscript.md##ask_return
 [Menu]: rakuscript.md##menu
 [menu_return]: rakuscript.md##menu_return
-[parse_script]: rakugo_singleton.md##parse_script
-[parse_and_execute_script]: rakugo_single##parse_and_execute_script
-[execute_script]: rakugo_singleton.md##execute_script
-[is_waiting_step]: rakugo_singleton.md##is_waiting_step
-[sg_custom_regex]: rakugo_singleton.md##sg_custom_regex
-[sg_ask]: rakugo_singleton.md##sg_ask
-[is_waiting_ask_return]: rakugo_singleton.md##is_waiting_ask_return
-[sg_menu]: rakugo_singleton.md##sg_menu
-[is_waiting_menu_return]: rakugo_singleton.md##is_waiting_menu_return
-[add_custom_regex]: rakugo_singleton.md##add_custom_regex
-[resume_loaded_script]: rakugo_singleton.md##resume_loaded_script
+[parse_script]: ##parse_script
+[parse_and_execute_script]: ##parse_and_execute_script
+[execute_script]: ##execute_script
+[is_waiting_step]: ##is_waiting_step
+[sg_custom_regex]: ##sg_custom_regex
+[sg_ask]: ##sg_ask
+[is_waiting_ask_return]: ##is_waiting_ask_return
+[sg_menu]: ##sg_menu
+[is_waiting_menu_return]: ##is_waiting_menu_return
+[add_custom_regex]: ##add_custom_regex
+[resume_loaded_script]: ##resume_loaded_script
