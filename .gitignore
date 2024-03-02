@@ -1,3 +1,6 @@
-/venv
+/.venv
+/gd_src
 /site
+/output
+gen_docs.py
 *.html
