@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../rakuscript_dialogue/">
       
-      
-        <link rel="next" href="../rakugo_singleton/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>How to Setup Export for Godot project that use Rakugo - Rakugo Dialogue System Docs</title>
+        <title>How use Rakugo Variables - Rakugo Dialogue System Docs</title>
       
     
     
@@ -71,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-setup-export-for-godot-project-that-use-rakugo" class="md-skip">
+        <a href="#how-use-rakugo-variables" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Setup Export for Godot project that use Rakugo
+              How use Rakugo Variables
             
           </span>
         </div>
@@ -261,18 +259,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../export/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -281,7 +270,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -366,9 +354,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../rkvars/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    How use Rakugo Variables
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -377,6 +385,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rakuscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      RakuScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDScript
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -401,6 +447,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rakuscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      RakuScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gdscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDScript
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -417,9 +489,45 @@
   
 
 
-<h1 id="how-to-setup-export-for-godot-project-that-use-rakugo">How to Setup Export for Godot project that use Rakugo</h1>
-<p>For any type of export, we need add RakuScript  <em><code>*.rk</code></em> files to export settings as by default, only files not recognized by Godot are ignored.</p>
-<p><img alt="" src="/docs/export-resources.png" /></p>
+<h1 id="how-use-rakugo-variables">How use Rakugo Variables</h1>
+<p>Rakugo Variables are called <em>RkVar</em> for short.
+They are global, and accessible from both RkScript and GDScript.</p>
+<h2 id="rakuscript">RakuScript</h2>
+<p>You can define var in <a href="../rakuscript/">RakuScript</a>  file, like this:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>player.life = 10
+</code></pre></div>
+You can access it in any RakuScript:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>narrator &quot;You have &lt;player.life&gt; life points left&quot;
+</code></pre></div></p>
+<h2 id="gdscript">GDScript</h2>
+<p>In GDScript you can define RkVars like this:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+You can access it in any RakuScript:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+</code></pre></div>
+You can change it:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">life</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">life</span><span class="p">)</span>
+</code></pre></div>
+You can display text with RkVar using Label like this:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">():</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">life</span><span class="p">)</span>
+</code></pre></div></p>
+<p>To auto-update text in label using <code>sg_variable_changed</code> signal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_variable_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update_text</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">(</span><span class="n">var_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">var_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player.life&quot;</span><span class="p">:</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">value</span>
+</code></pre></div>
 
 
 
