@@ -939,70 +939,73 @@ To change variables values in RakuScript you need to use <a href="../rakugo_vari
 <h2 id="say">Say</h2>
 <p><code>[char_tag] [String]</code></p>
 <p>Character with this char_tag say <em>String</em></p>
-<p>When Say is executed, a signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a> is send with dictionary of data for the character with this char_tag and this String in parameter.</p>
+<p>When Say is executed, a signal <a href="../rakugo_singleton/#sg_say">sg_say</a> is send with dictionary of data for the character with this char_tag and this String in parameter.</p>
 <p>If no character with this char_tag is found, signal is send with an empty dictionary.</p>
-<p>After Say is executed, Rakugo automatically waiting, it send a <a href="../rakugo_singleton/#step">step</a> signal.</p>
+<p>After Say is executed, Rakugo automatically waiting, it send a <a href="../rakugo_singleton/#sg_step">sg_step</a> signal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">is_waiting_step</span><span class="p">():</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">do_step</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="say-example">Say Example</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Gd &quot;Hello !&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Gd &quot;Hello !&quot;
 </code></pre></div>
 <h3 id="no-character">No character</h3>
 <p><code>[String]</code></p>
 <p>Say <em>String</em></p>
-<p>When Say is executed, a signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a> is send with empty dictionary and this String in parameter.</p>
+<p>When Say is executed, a signal <a href="../rakugo_singleton/#sg_say">sg_say</a> is send with empty dictionary and this String in parameter.</p>
 <h3 id="example-of-say-with-no-character">Example of say with no character</h3>
 <p><code>"Hello, world !"</code></p>
 <h3 id="use-variables">Use variables</h3>
 <p><code>&lt;[var_name]&gt; or &lt;[char_tag].[var_name]&gt;</code></p>
-<p>You can use variables in Say, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a>.</p>
+<p>You can use variables in Say, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#sg_say">sg_say</a>.</p>
 <h3 id="example-of-using-variables">Example of using variables</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&quot;My name is &lt;Gd.name&gt;, and I have &lt;life&gt; point of life&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&quot;My name is &lt;Gd.name&gt;, and I have &lt;life&gt; point of life&quot;
 </code></pre></div>
 <h2 id="ask">Ask</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>[var_name] = ? [question]
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[var_name] = ? [question] [placeholder]
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[var_name] = ? [character_tag] [question] [placeholder]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[var_name] = ? [question]
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[var_name] = ? [question] [placeholder]
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>[var_name] = ? [character_tag] [question] [placeholder]
 </code></pre></div>
 <p>It can be used get user input as string,
 for example you can use it to ask user for a his/her/their name.</p>
 <p>After a Ask is executed, Rakugo waiting call of <a href="./#ask_return">ask_return</a> signal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_return</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">if</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">is_waiting_ask_return</span><span class="p">():</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_return</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ask-example">Ask Example</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>player.name = ? &quot;What is your name ?&quot;
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>player.age = ? &quot;How old are you ?&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>player.name = ? &quot;What is your name ?&quot;
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>player.age = ? &quot;How old are you ?&quot;
 </code></pre></div>
 <h2 id="menu">Menu</h2>
 <p>It can be used to create a ui that switches between different branches
 of dialogue tree.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>menu menu_emily:
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    &quot;Talk with emily&quot; &gt; emily_talk
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    &quot;Wait&quot;
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    &quot;Blop&quot; &gt; test_dialog
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>menu menu_emily:
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    &quot;Talk with emily&quot; &gt; emily_talk
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    &quot;Wait&quot;
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    &quot;Blop&quot; &gt; test_dialog
 </code></pre></div>
 <p>It must start it from menu menu_name:
 <code>"Choice"</code> - is choice and <code>&gt;</code> is used to jump to other dialog/label or menu.
 Menu block ends with empty line.</p>
-<p>After a Menu is executed, Rakugo waiting call of <a href="./#ask_menu">ask_menu</a> signal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_menu</span><span class="p">(</span><span class="n">branch_index</span><span class="p">)</span>
+<p>After a Menu is executed, Rakugo waiting call of <a href="./#menu_return">menu_return</a> signal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">if</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">is_waiting_menu_return</span><span class="p">():</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">menu_return</span><span class="p">(</span><span class="n">branch_index</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="jump">Jump</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>jump [label_name] or jump [menu_label_name]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>jump [label_name] or jump [menu_label_name]
 </code></pre></div>
 <p>It will jump dialogue branch with given label_name or menu_label_name.</p>
 <h3 id="jump-example">Jump Example</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>jump start
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>jump shop_menu
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>jump start
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>jump shop_menu
 </code></pre></div>
 <h3 id="jump-if">Jump If</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>jump [label_name] if [condition]
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>jump [label_name] if [condition]
 </code></pre></div>
 <p>It will jump dialogue branch with given
 label_name or menu_label_name if condition is true.</p>
 <h3 id="jump-if-example">Jump If Example</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>jump emily_date if emily.relationship &gt;= 20
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>jump emily_date if emily.relationship &gt;= 20
 </code></pre></div>
 
 
