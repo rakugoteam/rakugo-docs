@@ -2,35 +2,36 @@
 
 ## Problem
 
-Now there is problem that you need to use GDScript to change those vars,
-as in RakuScript you can only overwrite them, but we working on it.
+Currently in RakuScript we **can't** do stuff like this:
 ```renpy
-a = 10
-a += 1 # and other mod operations doesn't work - error
-a = 11 # works
+a = 1
+b = a + 1
+c = 1 - 2
+d = 2 * 2
+e = 2 / 2
 ```
 
 ## Temporary Solution
 
-*It is temporary as we think that we fix this incontinence in near feature.*
+For now thanks to new features in 2.2,
+we can workaround this using variable assignments:
+```renpy
+a = 1
 
-This example show solution on character variable `eve.relationship` but it can be used on any variable.
-For this to work first you crate script called *Workarounds.gd* extends from `Node` and add to singletons.
-To add it to singletons go to menu *Project -> Project Settings*, then to *Autoload* tab and add *Workarounds.gd* to them.
+# b = a + 1
+b = a
+b += 1
 
-This is *Workarounds.gd* script:
-```gd
-extends Node
+# c = 1 - 2
+c = 1
+c -= 2
 
-## This example singleton make you able to use line `eve.relationship++10` in RakuScript
-## using this line will add 10 to eve.relationship
+# d = 2 * 2
+d = 2
+d *= 2
 
-func _ready():
-  Rakugo.parser_add_regex_at_runtime("AdvanceEveRelationship", "^eve.relationship++<value>{NUMERIC}$")
-  Rakugo.sg_custom_regex.connect(_on_custom_regex) # I just notice this line is missing in our docs
-
-func _on_custom_regex(key:String, result:RegExMatch):
-  if key == "AdvanceEveRelationship":
-    var eva_relationship = Rakugo.get_variable("eva.relationship")
-    Rakugo.set_variable("eva.relationship", eva_relationship + float(result.get_string(value)))
+# e = 2 / 2
+e = 1
+e /= 2
 ```
+
