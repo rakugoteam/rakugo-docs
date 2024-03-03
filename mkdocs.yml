@@ -19,6 +19,8 @@ theme:
   features:
     - navigation.instant
     - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
 
 plugins:
   - search
@@ -26,6 +28,11 @@ plugins:
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.keys
