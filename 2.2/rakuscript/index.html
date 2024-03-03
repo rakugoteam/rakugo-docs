@@ -891,7 +891,7 @@
 <h3 id="character-example">Character Example</h3>
 <p><code>character Gd Godot</code></p>
 <h2 id="variable">Variable</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">RakuScript</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">RakuScript</label><label for="__tabbed_2_2">GDScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># set variable
@@ -904,20 +904,19 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>[char_tag].[var_name]
 </span></code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># set variable</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="n">var_name</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># get variable</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">other_var_name</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># get variable from character</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="n">char_tag</span><span class="o">.</span><span class="n">var_name</span><span class="p">)</span>
+</span></code></pre></div>
 </div>
 </div>
-<p>=== GDScript:</p>
-<div class="language-text highlight"><pre><span></span><code>```gdscript
-# set variable
-Rakugo.set_variable(var_name, value)
-
-# get variable
-Rakugo.get_variable(other_var_name)
-
-# get variable from character
-Rakugo.get_variable(char_tag.var_name)
-```
-</code></pre></div>
+</div>
 <p>Create a new variable with this var_name and this value assigned.
 If <code>other_var_name</code> or <code>char_tag.var_name</code> is defined, use value of <code>other_var_name</code> or <code>char_tag.var_name</code>.
 If this variable already exist, value is replaced by new one.
