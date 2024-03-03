@@ -494,50 +494,50 @@
 They are global, and accessible from both RkScript and GDScript.</p>
 <h2 id="rakuscript">RakuScript</h2>
 <p>You can define var in <a href="../rakuscript/">RakuScript</a> file, like this:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>player.life = 10
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>player.life = 10
+</span></code></pre></div>
 You can access it in any RakuScript:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>narrator &quot;You have &lt;player.life&gt; life points left&quot;
-</code></pre></div></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>narrator &quot;You have &lt;player.life&gt; life points left&quot;
+</span></code></pre></div></p>
 <p>You can change already existing var:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>player.life += 5
-</code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>player.life += 5
+</span></code></pre></div>
 <a href="../rakugo_variables_workaround/">Read more changing already existing var.</a></p>
 <h2 id="gdscript">GDScript</h2>
 <p>In GDScript you can define RkVars like this:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+</span></code></pre></div>
 You can access it in any RakuScript:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 You can change it:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">life</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">life</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">life</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">5</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">life</span><span class="p">)</span>
+</span></code></pre></div>
 You can display text with RkVar using Label like this:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">():</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">life</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1"># or one-line version:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">():</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">life</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">)</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">life</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1"># or one-line version:</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p>To auto-update text in label using <code>sg_variable_changed</code> signal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_variable_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update_text</span><span class="p">)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">(</span><span class="n">var_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">):</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">var_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player.life&quot;</span><span class="p">:</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">value</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1"># or one-line version:</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
-</code></pre></div>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_variable_changed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">update_text</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">func</span><span class="w"> </span><span class="n">update_text</span><span class="p">(</span><span class="n">var_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">):</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">var_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;player.life&quot;</span><span class="p">:</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;You have </span><span class="si">%d</span><span class="s2"> life points left&quot;</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1"># or one-line version:</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
+</span></code></pre></div>
 
 
 
@@ -576,7 +576,7 @@ You can display text with RkVar using Label like this:
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.indexes"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
