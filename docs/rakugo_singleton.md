@@ -188,6 +188,18 @@ Send when a Rakugo's character variable is changed.
 
 ### Methods
 
+#### replace_variables
+
+params: (text:String)
+
+Will replace any `<var_name>` with value of RakugoVar with `var_name` in given script.
+
+```gdscript
+# example
+Rakugo.replace_variables("You have <player.life> life points left")
+# will return: "You have 5 life points left"
+```
+
 #### set_variable
 
 params: (var_name:String, value:Variant)
