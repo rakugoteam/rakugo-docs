@@ -457,36 +457,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#no-character" class="md-nav__link">
-    <span class="md-ellipsis">
-      No character
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-of-say-with-no-character" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example of say with no character
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#use-variables" class="md-nav__link">
     <span class="md-ellipsis">
       Use variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-of-using-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example of using variables
     </span>
   </a>
   
@@ -516,6 +489,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#use-variables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use variables
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -527,6 +509,21 @@
       Menu
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Menu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-variables_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -736,36 +733,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#no-character" class="md-nav__link">
-    <span class="md-ellipsis">
-      No character
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-of-say-with-no-character" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example of say with no character
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#use-variables" class="md-nav__link">
     <span class="md-ellipsis">
       Use variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-of-using-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example of using variables
     </span>
   </a>
   
@@ -795,6 +765,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#use-variables_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use variables
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -806,6 +785,21 @@
       Menu
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Menu">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-variables_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -942,14 +936,26 @@
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>life = Gd.max_life
 </span></code></pre></div>
 <h2 id="characters-variable">Character's variable</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>
+<p>Setting variable create a new variable with this var_name on character with this <code>char_tag</code>, and this value assigned.</p>
+</li>
+<li>
+<p>If this variable already exist on this character, value is replaced by new one.</p>
+</li>
+<li>
+<p><a href="../rkvars/"><strong>Read more about RakugoVars</strong></a></p>
+</li>
+</ul>
+</div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># set variable
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>[char_tag].[var_name] = [value]
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a># get variable from character
 </span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>[char_tag].[var_name]
 </span></code></pre></div>
-<p>Create a new variable with this var_name on character with this <code>char_tag</code>, and this value assigned.</p>
-<p>If this variable already exist on this character, value is replaced by new one.</p>
 <h3 id="characters-variable-example">Character's variable example</h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># create / set character variable
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Gd.friendship = 5
@@ -961,55 +967,76 @@
 </span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Gd.friendship = Gd.max_friendship
 </span></code></pre></div>
 <h2 id="say">Say</h2>
+<div class="admonition info using double quotes">
+<p class="admonition-title">Info</p>
+<p>Form version 2.2 you can use double quotes "it is a "really" good one" in any string in RakuScript.</p>
+</div>
 <p><code>[char_tag] [String]</code></p>
 <p>Character with this char_tag say <em>String</em></p>
-<p>When Say is executed, a signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a> is send with dictionary of data for the character with this char_tag and this String in parameter.</p>
+<p>When Say is executed, a signal <a href="../rakugo_singleton/#say">say</a> is send with dictionary of data for the character with this char_tag and this String in parameter.</p>
 <p>If no character with this char_tag is found, signal is send with an empty dictionary.</p>
 <p>After Say is executed, Rakugo automatically waiting, it send a <a href="../rakugo_singleton/#step">step</a> signal.</p>
 <h3 id="say-example">Say Example</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Gd &quot;Hello !&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># Character with tag `Gd` says &quot;Hello!&quot;
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Gd &quot;Hello !&quot;
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a># No character / narrator says &quot;Hello!&quot;
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>&quot;Hello!&quot;
 </span></code></pre></div>
-<h3 id="no-character">No character</h3>
-<p><code>[String]</code></p>
 <p>Say <em>String</em></p>
-<p>When Say is executed, a signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a> is send with empty dictionary and this String in parameter.</p>
-<h3 id="example-of-say-with-no-character">Example of say with no character</h3>
-<p><code>"Hello, world !"</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When Say is executed, a signal <a href="../rakugo_singleton/#say">say</a> is send with empty dictionary and this String in parameter.</p>
+</div>
 <h3 id="use-variables">Use variables</h3>
-<p><code>&lt;[var_name]&gt; or &lt;[char_tag].[var_name]&gt;</code></p>
-<p>You can use variables in Say, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#say-characterdictionary-textstring">say</a>.</p>
-<h3 id="example-of-using-variables">Example of using variables</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&quot;My name is &lt;Gd.name&gt;, and I have &lt;life&gt; point of life&quot;
+<p>You can use variables in Say, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#say">say</a>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># &lt;[var_name]&gt; or &lt;[char_tag].[var_name]&gt;
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>&quot;My name is &lt;Gd.name&gt;, and I have &lt;life&gt; point of life&quot;
 </span></code></pre></div>
 <h2 id="ask">Ask</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>[var_name] = ? [question]
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>[var_name] = ? [question] [placeholder]
-</span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>[var_name] = ? [character_tag] [question] [placeholder]
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>[var_name] = ? [question] [placeholder]
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>[var_name] = ? [character_tag] [question] [placeholder]
 </span></code></pre></div>
 <p>It can be used get user input as string,
 for example you can use it to ask user for a his/her/their name.</p>
 <p>After a Ask is executed, Rakugo waiting call of <a href="./#ask_return">ask_return</a> signal:</p>
-<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_return</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_return</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </span></code></pre></div>
 <h3 id="ask-example">Ask Example</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>player.name = ? &quot;What is your name ?&quot;
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>player.age = ? &quot;How old are you ?&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>player.name = ? &quot;What is your name ?&quot;
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>player.age = ? &quot;How old are you ?&quot;
+</span></code></pre></div>
+<h3 id="use-variables_1">Use variables</h3>
+<p>You can use variables in Ask, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#ask">ask</a>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a># &lt;[var_name]&gt; or &lt;[char_tag].[var_name]&gt;
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>player.name = ? &quot;What is your name ?&quot; &quot;&lt;default_player_name&gt;&quot;
 </span></code></pre></div>
 <h2 id="menu">Menu</h2>
 <p>It can be used to create a ui that switches between different branches
 of dialogue tree.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>menu menu_emily:
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    &quot;Talk with emily&quot; &gt; emily_talk
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    &quot;Wait&quot;
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    &quot;Blop&quot; &gt; test_dialog
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>menu menu_emily:
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>    &quot;Talk with emily&quot; &gt; emily_talk
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    &quot;Wait&quot;
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    &quot;Blop&quot; &gt; test_dialog
 </span></code></pre></div>
 <p>It must start it from menu menu_name:
 <code>"Choice"</code> - is choice and <code>&gt;</code> is used to jump to other dialog/label or menu.
 Menu block ends with empty line.</p>
 <p>After a Menu is executed, Rakugo waiting call of <a href="./#ask_menu">ask_menu</a> signal:</p>
-<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_menu</span><span class="p">(</span><span class="n">branch_index</span><span class="p">)</span>
+<div class="language-gdscript highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_menu</span><span class="p">(</span><span class="n">branch_index</span><span class="p">)</span>
+</span></code></pre></div>
+<h3 id="use-variables_2">Use variables</h3>
+<p>You can use variables in Menu, Rakugo replace them by their values in String before send signal <a href="../rakugo_singleton/#menu">menu</a>.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a># &lt;[var_name]&gt; or &lt;[char_tag].[var_name]&gt;
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a># player can change name of npc called by default emily
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>emily.name = ? &quot;What is her name ?&quot; &quot;&lt;emily.name&gt;&quot;
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>menu menu_emily:
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    &quot;Talk with &lt;emily.name&gt;&quot; &gt; emily_talk
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    &quot;Wait&quot;
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    &quot;Blop&quot; &gt; test_dialog
 </span></code></pre></div>
 <h2 id="jump">Jump</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>jump [label_name] or jump [menu_label_name]
