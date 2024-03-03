@@ -365,17 +365,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    How use Rakugo Variables
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -385,43 +374,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#rakuscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      RakuScript
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gdscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      GDScript
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -447,32 +399,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#rakuscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      RakuScript
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gdscript" class="md-nav__link">
-    <span class="md-ellipsis">
-      GDScript
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -492,7 +418,9 @@
 <h1 id="how-use-rakugo-variables">How use Rakugo Variables</h1>
 <p>Rakugo Variables are called <em>RkVar</em> for short.
 They are global, and accessible from both RkScript and GDScript.</p>
-<h2 id="rakuscript">RakuScript</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">RakuScript</label><label for="__tabbed_1_2">GDScript</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>You can define var in <a href="../rakuscript/">RakuScript</a> file, like this:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>player.life = 10
 </span></code></pre></div>
@@ -503,7 +431,8 @@ You can access it in any RakuScript:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>player.life += 5
 </span></code></pre></div>
 <a href="../rakugo_variables_workaround/">Read more changing already existing var.</a></p>
-<h2 id="gdscript">GDScript</h2>
+</div>
+<div class="tabbed-block">
 <p>In GDScript you can define RkVars like this:
 <div class="language-gdscript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">set_variable</span><span class="p">(</span><span class="s2">&quot;player.life&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
 </span></code></pre></div>
@@ -524,8 +453,8 @@ You can display text with RkVar using Label like this:
 </span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
 </span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="c1"># or one-line version:</span>
 </span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
-</span></code></pre></div></p>
-<p>To auto-update text in label using <code>sg_variable_changed</code> signal:</p>
+</span></code></pre></div>
+To auto-update text in label using <code>sg_variable_changed</code> signal:</p>
 <div class="language-gdscript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">expand</span><span class="w"> </span><span class="n">Label</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
@@ -538,6 +467,9 @@ You can display text with RkVar using Label like this:
 </span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="c1"># or one-line version:</span>
 </span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
 </span></code></pre></div>
+</div>
+</div>
+</div>
 
 
 
