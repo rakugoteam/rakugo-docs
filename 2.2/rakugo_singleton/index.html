@@ -1238,7 +1238,9 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <h4 id="replace_variables">replace_variables</h4>
 <p>params: (text:String)</p>
 <p>Will replace any <code>&lt;var_name&gt;</code> with value of RakugoVar with <code>var_name</code> in given script.</p>
-<p>???+ note</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
 <p>String is replaced with a value when you <strong>use/read it</strong>, not on assignment.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># example</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">Rakugo</span><span class="o">.</span><span class="n">replace_variables</span><span class="p">(</span><span class="s2">&quot;You have &lt;player.life&gt; life points left&quot;</span><span class="p">)</span>
