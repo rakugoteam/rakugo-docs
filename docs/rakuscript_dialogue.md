@@ -1,8 +1,8 @@
 # RakuScriptDialogue
 
+_Extends **Node**_
 
-Extends **Node**
-
+Simple node to load and run Raku Script
 
 ## Vars
  - [**raku_script**](#raku_script)
@@ -16,8 +16,6 @@ Extends **Node**
 ## Vars
 ### raku_script
 *default value* : `String`
-
-Simple node to load and run Raku Script
 
 Raku Script (*.rk) to load and run
 
