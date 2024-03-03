@@ -1306,10 +1306,10 @@ This means that you can call Rakugo from anywhere in your code.</p>
 </span></code></pre></div>
 <h4 id="get_character">get_character</h4>
 <ul>
-<li>params:<code class="language-gd highlight"><span class="n">char_tag</span><span class="p">:</span><span class="n">string</span></code></li>
+<li>params:<code class="language-gd highlight"><span class="n">char_tag</span><span class="p">:</span><span class="nb nb-Type">String</span></code></li>
 <li>return:<code class="language-gdscript highlight"><span class="nb nb-Type">Dictionary</span></code></li>
 </ul>
-<p>If a character with this char_tag is not found return an empty Dictionary and print an error.</p>
+<p>If a character with this <code>char_tag</code> is not found return an empty Dictionary and print an error.</p>
 <div class="language-gd highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">var</span><span class="w"> </span><span class="n">sy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">get_character</span><span class="p">(</span><span class="s2">&quot;Sy&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <h4 id="get_narrator">get_narrator</h4>
@@ -1332,8 +1332,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
 </span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">func</span><span class="w"> </span><span class="n">_on_custom_regex</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p">:</span><span class="n">RegExMatch</span><span class="p">):</span>
 </span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">  </span><span class="k">match</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="s2">&quot;HW&quot;</span><span class="p">:</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="w">      </span><span class="nb">prints</span><span class="p">(</span><span class="s2">&quot;regex hello, world !&quot;</span><span class="p">)</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="w">    </span><span class="s2">&quot;HW&quot;</span><span class="p">:</span><span class="w"> </span><span class="nb">prints</span><span class="p">(</span><span class="s2">&quot;regex hello, world !&quot;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>You can use these Rakugo tokens in your regex :</p>
 <div class="language-gd highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;[a-zA-Z][a-zA-Z_0-9]*&quot;</span><span class="p">,</span>
@@ -1386,7 +1385,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <ul>
 <li>params:<code class="language-gd highlight"><span class="n">save_name</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;quick&quot;</span></code></li>
 </ul>
-<p>Load all variables, characters, script_name and last line readed on last executed script, from <em>user://save/save_name/save.json</em> file if existed.</p>
+<p>Load all variables, characters, script_name and last line read on last executed script, from <em>user://save/save_name/save.json</em> file if existed.</p>
 <p>Parse the script with <code>script_name</code>. To run it use <a href="##resume_loaded_script">resume_loaded_script</a> (just bellow).</p>
 <h4 id="resume_loaded_script">resume_loaded_script</h4>
 <p>Run the loaded script from last line readed.</p>
@@ -1418,7 +1417,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <li>params:<code class="language-gd highlight"><span class="n">index</span><span class="p">:</span><span class="nb nb-Type">int</span></code></li>
 </ul>
 <p>Use it when <a href="##is_waiting_menu_return">is_waiting_menu_return</a> return <code>true</code>, to continue script reading process.</p>
-<p><code>index</code> is the index of choosed choice in the choices array given by <a href="##sg_menu">sg_menu</a>.</p>
+<p><code>index</code> is the index of chosen choice in the choices array given by <a href="##sg_menu">sg_menu</a>.</p>
 
 
 
@@ -1429,6 +1428,8 @@ This means that you can call Rakugo from anywhere in your code.</p>
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
         </div>
         
       </main>
@@ -1457,7 +1458,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.indexes", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.indexes", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
