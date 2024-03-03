@@ -4,7 +4,7 @@ Rakugo Variables are called _RkVar_ for short.
 They are global, and accessible from both RkScript and GDScript.
 
 ## RakuScript
-You can define var in [RakuScript]  file, like this:
+You can define var in [RakuScript] file, like this:
 ```renpy
 player.life = 10
 ```
@@ -12,6 +12,12 @@ You can access it in any RakuScript:
 ```renpy
 narrator "You have <player.life> life points left"
 ```
+
+You can change already existing var:
+```renpy
+player.life += 5
+```
+[Read more changing already existing var.]
 
 ## GDScript
 In GDScript you can define RkVars like this:
@@ -34,7 +40,10 @@ expand Label
 
 func update_text():
 	var life =  Rakugo.get_variable("player.life")
-	text = ("You have %d life points left" % life)
+	text = "You have %d life points left" % life
+
+	# or one-line version:
+	text = Rakugo.replace_variables("You have <player.life> life points left")
 ```
 
 To auto-update text in label using `sg_variable_changed` signal:
@@ -48,7 +57,12 @@ func _ready():
 func update_text(var_name:String, value):
 	if var_name == "player.life":
 		text = text = "You have %d life points left" % value
+		
+		# or one-line version:
+		text = Rakugo.replace_variables("You have <player.life> life points left")
 ```
 
+
+[Read more changing already existing var.]: rakugo_variables_workaround.md
 [Rakugo Singleton]: rakugo_singleton.md
 [RakuScript]: rakuscript.md
