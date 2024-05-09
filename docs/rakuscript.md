@@ -7,6 +7,26 @@ You can use with **RakuScriptDialogue** node or using:
 ```gdscript
 Rakugo.parse_script("path/to/raku_script.rk")
 ```
+## Label
+
+=== "RakuScript"
+
+    ```renpy
+    [label_name]:
+        # here some code with indent
+    ```
+
+It allows to split script to smaller parts between
+you can jump between those parts with [`jump`](#jump) or using [`menu`](#menu).
+
+### Label Example
+
+=== "RakuScript"
+
+    ```renpy
+    emily_date_ask:
+        emily "Will you go on date with me?"
+    ```
 
 ## Character
 
@@ -200,7 +220,7 @@ menu menu_emily:
 ```
 
 It must start it from menu menu_name:
-`"Choice"` - is choice and `>` is used to jump to other dialog/label or menu.
+`"Choice"` - is choice and `>` is used to jump to other [label](#label) or menu.
 Menu block ends with empty line.
 
 After a Menu is executed, Rakugo waiting call of [menu_return]:
