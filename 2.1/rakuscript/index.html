@@ -1038,7 +1038,7 @@ To change variables values in RakuScript you need to use <a href="../rakugo_vari
 </code></pre></div>
 <p>It can be used get user input as string,
 for example you can use it to ask user for a his/her/their name.</p>
-<p>After a Ask is executed, Rakugo waiting call of <a href="akugo_singleton.md#ask_return">ask_return</a> signal:</p>
+<p>After a Ask is executed, Rakugo waiting call of <a href="../rakugo_singleton/#ask_return">ask_return</a> signal:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">if</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">is_waiting_ask_return</span><span class="p">():</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">ask_return</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
 </code></pre></div>
@@ -1057,7 +1057,7 @@ of dialogue tree.</p>
 <p>It must start it from menu menu_name:
 <code>"Choice"</code> - is choice and <code>&gt;</code> is used to jump to other dialog/label or menu.
 Menu block ends with empty line.</p>
-<p>After a Menu is executed, Rakugo waiting call of <a href="akugo_singleton.md#menu_return">menu_return</a> signal:</p>
+<p>After a Menu is executed, Rakugo waiting call of <a href="../rakugo_singleton/#menu_return">menu_return</a> signal:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">if</span><span class="w"> </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">is_waiting_menu_return</span><span class="p">():</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">menu_return</span><span class="p">(</span><span class="n">branch_index</span><span class="p">)</span>
 </code></pre></div>
