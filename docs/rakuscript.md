@@ -7,18 +7,42 @@ You can use with **RakuScriptDialogue** node or using:
 ```gdscript
 Rakugo.parse_script("path/to/raku_script.rk")
 ```
+## Label
+
+=== "RakuScript"
+
+    ```renpy
+    [label_name]:
+        # here some code with indent
+    ```
+
+It allows to split script to smaller parts between
+you can jump between those parts with [`jump`](#jump) or using [`menu`](#menu).
+
+### Label Example
+
+=== "RakuScript"
+
+    ```renpy
+    emily_date_ask:
+        emily "Will you go on date with me?"
+    ```
 
 ## Character
 
-```character [char_tag] [char_name]```
+=== "RakuScript"
 
-Equivalent in GDScript:
+    ```renpy
+    character [char_tag] [char_name]
+    ```
 
-```gdscript
-Rakugo.define_character(char_tag, char_name)
-```
+=== "GDScript"
 
-Create/Define a new character with this char_tag and char_name
+    ```gdscript
+    Rakugo.define_character(char_tag, char_name)
+    ```
+
+Create/Define a new character with this `char_tag` and `char_name`
 
 ### Character Example
 
@@ -27,34 +51,38 @@ Create/Define a new character with this char_tag and char_name
 
 ## Variable
 
-```renpy
-# set variable
-[var_name] = [value]
+!!! note
+    - Setting variable create a new variable with this var_name and this value assigned.
 
-# get variable
-[other_var_name]
+    - If this variable already exist, value is replaced by new one.
 
-# get variable from character
-[char_tag].[var_name]
-```
+    - [**Read more about RakugoVars**](rkvars.md)
 
-Equivalent in GDScript:
+=== "RakuScript"
 
-```gdscript
-# set variable
-Rakugo.set_variable(var_name, value)
+    ```renpy
+    # set variable
+    [var_name] = [value]
 
-# get variable
-Rakugo.get_variable(other_var_name)
+    # get variable
+    [other_var_name]
 
-# get variable from character
-Rakugo.get_variable(char_tag.var_name)
-```
+    # get variable from character
+    [char_tag].[var_name]
+    ```
 
-Create a new variable with this var_name and this value assigned.
-If `other_var_name` or `char_tag.var_name` is defined, use value of `other_var_name` or `char_tag.var_name`.
-If this variable already exist, value is replaced by new one.
-To change variables values in RakuScript you need to use [workaround].
+=== "GDScript"
+
+    ```gdscript
+    # set variable
+    Rakugo.set_variable(var_name, value)
+
+    # get variable
+    Rakugo.get_variable(other_var_name)
+
+    # get variable from character
+    Rakugo.get_variable(char_tag.var_name)
+    ```
 
 ### Variable Example
 
@@ -74,6 +102,13 @@ life = Gd.max_life
 
 ## Character's variable
 
+!!! note
+    - Setting variable create a new variable with this var_name on character with this `char_tag`, and this value assigned.
+
+    - If this variable already exist on this character, value is replaced by new one.
+
+    - [**Read more about RakugoVars**](rkvars.md)
+
 ```renpy
 # set variable
 [char_tag].[var_name] = [value]
@@ -81,12 +116,6 @@ life = Gd.max_life
 # get variable from character
 [char_tag].[var_name]
 ```
-
-Create a new variable with this var_name on character with this char_tag, and this value assigned.
-
-If other_var_name or char_tag.var_name is defined, use value of other_var_name or char_tag.var_name.
-
-If this variable already exist on this character, value is replaced by new one.
 
 ### Character's variable example
 
@@ -103,99 +132,118 @@ Gd.friendship = Gd.max_friendship
 
 ## Say
 
-```[char_tag] [String]```
+!!! info Using double quotes
+
+    Form version 2.2 you can use double quotes "it is a "really" good one" in any string in RakuScript.
+
+```
+[char_tag] [String]
+```
 
 Character with this char_tag say *String*
 
-When Say is executed, a signal [say] is send with dictionary of data for the character with this char_tag and this String in parameter.
+When Say is executed, a signal [sg_say] is send with dictionary of data for the character with this char_tag and this String in parameter.
 
 If no character with this char_tag is found, signal is send with an empty dictionary.
 
-After Say is executed, Rakugo automatically waiting, it send a [step] signal.
+After Say is executed, Rakugo automatically waiting, it send a [sg_step] signal.
+
+```gdscript
+if Rakugo.is_waiting_step():
+    Rakugo.do_step()
+```
 
 ### Say Example
 
 ```renpy
+# Character with tag `Gd` says "Hello!"
 Gd "Hello !"
+
+# No character / narrator says "Hello!"
+"Hello!"
 ```
-
-### No character
-
-```[String]```
 
 Say *String*
 
-When Say is executed, a signal [say] is send with empty dictionary and this String in parameter.
-
-### Example of say with no character
-
-```"Hello, world !"```
+!!! note
+    When Say is executed, a signal [say] is send with empty dictionary and this String in parameter.
 
 ### Use variables
 
-```<[var_name]> or <[char_tag].[var_name]>```
-
 You can use variables in Say, Rakugo replace them by their values in String before send signal [say].
 
-### Example of using variables
-
-
 ```renpy
+# <[var_name]> or <[char_tag].[var_name]>
 "My name is <Gd.name>, and I have <life> point of life"
 ```
 
 ## Ask
 
-```renpy
-[var_name] = ? [question]
-```
-
-```renpy
-[var_name] = ? [question] [placeholder]
-```
-
-```renpy
-[var_name] = ? [character_tag] [question] [placeholder]
-
-```
-
 It can be used get user input as string,
 for example you can use it to ask user for a his/her/their name.
 
-After a Ask is executed, Rakugo waiting call of [ask_return] signal:
-
-```gdscript
-Rakugo.ask_return(answer)
+```renpy
+[var_name] = ? [question]
+[var_name] = ? [question] [placeholder]
+[var_name] = ? [character_tag] [question] [placeholder]
 ```
-
 ### Ask Example
 
 ```renpy
 player.name = ? "What is your name ?"
 player.age = ? "How old are you ?"
 ```
+### Use variables
+
+You can use variables in Ask, Rakugo replace them by their values in String before send signal [sg_ask].
+
+```renpy
+# <[var_name]> or <[char_tag].[var_name]>
+player.name = ? "What is your name ?" "<default_player_name>"
+```
+After a Ask is executed, Rakugo waiting call of [ask_return]:
+
+```gdscript
+if Rakugo.is_waiting_ask_return():
+    Rakugo.ask_return("Bob")
+```
 
 ## Menu
 
-It can be used to create a ui that switches between different branches
-of dialogue tree.
+It can be used to create a ui that switches between different branches of dialogue tree.
 
 ```renpy
 menu menu_emily:
     "Talk with emily" > emily_talk
     "Wait"
     "Blop" > test_dialog
-    
 ```
 
 It must start it from menu menu_name:
-`"Choice"` - is choice and `>` is used to jump to other dialog/label or menu.
+`"Choice"` - is choice and `>` is used to jump to other [label](#label) or menu.
 Menu block ends with empty line.
 
-After a Menu is executed, Rakugo waiting call of [ask_menu] signal:
+After a Menu is executed, Rakugo waiting call of [menu_return]:
 
 ```gdscript
-Rakugo.ask_menu(branch_index)
+if Rakugo.is_waiting_menu_return():
+    Rakugo.menu_return(branch_index)
+```
+
+### Use variables
+
+You can use variables in Menu, Rakugo replace them by their values in String before send signal [sg_menu].
+
+```renpy
+# <[var_name]> or <[char_tag].[var_name]>
+
+# player can change name of npc called by default emily
+emily.name = ? "What is her name ?" "<emily.name>"
+
+menu menu_emily:
+    "Talk with <emily.name>" > emily_talk
+    "Wait"
+    "Blop" > test_dialog
 ```
 
 ## Jump
@@ -208,7 +256,6 @@ It will jump dialogue branch with given label_name or menu_label_name.
 
 ### Jump Example
 
-
 ```renpy
 jump start
 
@@ -216,7 +263,6 @@ jump shop_menu
 ```
 
 ### Jump If
-
 
 ```renpy
 jump [label_name] if [condition]
@@ -227,13 +273,13 @@ label_name or menu_label_name if condition is true.
 
 ### Jump If Example
 
-
 ```renpy
 jump emily_date if emily.relationship >= 20
 ```
 
-[say]: rakugo_singleton.md#say-characterdictionary-textstring
-[step]: rakugo_singleton.md#step
+[sg_say]: rakugo_singleton.md#sg_say
+[sg_ask]: rakugo_singleton.md#sg_ask
+[sg_menu]: rakugo_singleton.md#sg_menu
+[sg_step]: rakugo_singleton.md#sg_step
 [ask_return]: rakuscript.md#ask_return
-[ask_menu]: rakuscript.md#ask_menu
-[workaround]:rakugo_variables_workaround.md
+[menu_return]: rakuscript.md#menu_return

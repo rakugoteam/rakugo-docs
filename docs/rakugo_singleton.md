@@ -71,7 +71,7 @@ Only methods [parse_script] or [parse_and_execute_script], use a file_path. For 
 
 #### sg_say
 
-args: (character:Dictionary, text:String)
+- args:`#!gd character:Dictionary, text:String`
 
 Send when a [Say] instruction is executed then Rakugo waiting call of [do_step]
 
@@ -97,7 +97,7 @@ func _on_step():
 
 #### sg_ask
 
-args: (character:Dictionary, question:String, default_answer:String)
+- args:`#!gd character:Dictionary, question:String, default_answer:String`
 
 Send when a [Ask] instruction is executed then Rakugo waiting call of [ask_return].
 
@@ -111,7 +111,7 @@ func _on_ask(character:Dictionary, question:String, default_answer:String):
 
 #### sg_menu
 
-args: (choices:Array)
+- args:`#!gd choices:Array`
 
 Send when a [Menu] instruction is executed then Rakugo waiting call of [menu_return].
 
@@ -125,7 +125,7 @@ func _on_menu(choices:PackedStringArray):
 
 #### sg_execute_script_start
 
-args: (script_name:String)
+- args:`#!gd script_name:String`
 
 Send when the script with this `script_name` execution is started.
 
@@ -139,7 +139,7 @@ func _on_execute_script_start(script_name:String):
 
 #### sg_execute_script_finished
 
-args: (script_name:String, error_str:String)
+- args:`#!gd script_name:String, error_str:String`
 
 Send when the script with this `script_name` execution is finished.
 
@@ -155,7 +155,7 @@ func _on_execute_script_finished(script_name:String, error_str:String):
 
 #### sg_custom_regex
 
-args: (key:String, result:RegExMatch)
+- args:`#!gd key:String, result:RegExMatch`
 
 Send when a custom instruction is executed.
 
@@ -176,21 +176,37 @@ func _on_custom_regex(key:String, result:RegExMatch):
 
 #### sg_variable_changed
 
-args : (var_name:String, value:Variant)
+- args:`#!gd var_name:String, value:Variant`
 
 Send when a Rakugo's variable is changed.
 
 #### sg_character_variable_changed
 
-args : (character_tag:String, var_name:String, value:Variant)
+- args:`#!gd character_tag:String, var_name:String, value:Variant`
 
 Send when a Rakugo's character variable is changed.
 
 ### Methods
 
+#### replace_variables
+
+- params:`#!gd text:String`
+
+Will replace any `<var_name>` with value of RakugoVar with `var_name` in given script.
+
+!!! note
+
+    String is replaced with a value when you **use/read it**, not on assignment.
+
+```gdscript
+# example
+Rakugo.replace_variables("You have <player.life> life points left")
+# will - return:`#!gdscript "You have 5 life points left"`
+```
+
 #### set_variable
 
-params: (var_name:String, value:Variant)
+- params:`#!gd var_name:String, value:Variant`
 
 ```gdscript
 ## set or create a global variable
@@ -202,8 +218,8 @@ Rakugo.set_variable("Sy.life", 5)
 
 #### get_variable
 
-params: (var_name:String)
-return: Variant
+- params:`#!gd var_name:String`
+- return:`#!gdscript Variant`
 
 Return `null` if not found or character with this tag does not exist. Print an error in this case.
 
@@ -217,8 +233,8 @@ var sy_life = Rakugo.get_variable("Sy.life")
 
 #### has_variable
 
-params: (var_name:String)
-return: bool
+- params:`#!gd var_name:String`
+- return:`#!gdscript bool`
 
 Return `false` if not found or character with this tag does not exist. Print an error in this case.
 
@@ -232,7 +248,7 @@ var has_sy_life = Rakugo.has_variable("Sy.life")
 
 #### define_character
 
-params: (char_tag:String, char_name:String)
+- params:`#!gd char_tag:String, char_name:String`
 
 ```gdscript
 Rakugo.define_character("Sy", "Sylvie")
@@ -240,10 +256,10 @@ Rakugo.define_character("Sy", "Sylvie")
 
 #### get_character
 
-params: (char_tag:string)
-return: Dictionary
+- params:`#!gd char_tag:String`
+- return:`#!gdscript Dictionary`
 
-If a character with this char_tag is not found return an empty Dictionary and print an error.
+If a character with this `char_tag` is not found return an empty Dictionary and print an error.
 
 ```gd
 var sy = Rakugo.get_character("Sy")
@@ -251,13 +267,13 @@ var sy = Rakugo.get_character("Sy")
 
 #### get_narrator
 
-return: Dictionary
+- return:`#!gdscript Dictionary`
 
 Returns character with name defined in **Project Settings**: *addons/rakugo/narrator/name*
 
 #### add_custom_regex
 
-params: (key:String, regex:String)
+- params:`#!gd key:String, regex:String`
 
 Add new custom instruction to RkScript.
 
@@ -274,8 +290,7 @@ func _ready():
 
 func _on_custom_regex(key:String, result:RegExMatch):
   match(key):
-    "HW":
-      prints("regex hello, world !")
+    "HW": prints("regex hello, world !")
 ```
 
 You can use these Rakugo tokens in your regex :
@@ -292,8 +307,8 @@ GDocs about regex : https://docs.godotengine.org/en/stable/classes/class_regex.h
 
 #### parse_script
 
-params: (file_path:String)
-return: Error
+- params:`#!gd file_path:String`
+- return:`#!gdscript Error`
 
 Parse a script and store it. You can execute it with [execute_script].
 
@@ -308,8 +323,8 @@ func _ready():
 
 #### execute_script
 
-params: (script_name:String)
-return: Error
+- params:`#!gd script_name:String`
+- return:`#!gdscript Error`
 
 Execute a script previously registered with [parse_script].
 
@@ -331,21 +346,21 @@ func _process(_delta):
 
 #### parse_and_execute_script
 
-params: (file_path:String)
+- params:`#!gd file_path:String`
 
 Do [parse_script], if return `OK` then do [execute_script].
 
 #### save_game
 
-params: (save_name:String = "quick")
+- params:`#!gd save_name:String = "quick"`
 
 Save all variables, characters, script_name and last line readed on last executed script, in *user://save/save_name/save.json* file.
 
 #### load_game
 
-params: (save_name:String = "quick")
+- params:`#!gd save_name:String = "quick"`
 
-Load all variables, characters, script_name and last line readed on last executed script, from *user://save/save_name/save.json* file if existed.
+Load all variables, characters, script_name and last line read on last executed script, from *user://save/save_name/save.json* file if existed.
 
 Parse the script with `script_name`. To run it use [resume_loaded_script] (just bellow).
 
@@ -355,7 +370,7 @@ Run the loaded script from last line readed.
 
 #### is_waiting_step
 
-return: bool
+- return:`#!gdscript bool`
 
 Returns `true` when Rakugo waiting call of [do_step].
 
@@ -365,13 +380,13 @@ Use it when [is_waiting_step] return `true`, to continue script reading process.
 
 #### is_waiting_ask_return
 
-return: bool
+- return:`#!gdscript bool`
 
 Returns `true` when Rakugo waiting call of [ask_return].
 
 #### ask_return
 
-params: (result:Variant)
+- params:`#!gd result:Variant`
 
 Use it when [is_waiting_ask_return] return `true`, to continue script reading process.
 
@@ -379,17 +394,17 @@ Use it when [is_waiting_ask_return] return `true`, to continue script reading pr
 
 #### is_waiting_menu_return
 
-return: bool
+- return:`#!gdscript bool`
 
 Returns `true` when Rakugo waiting call of [menu_return].
 
 #### menu_return
 
-params: (index:int)
+- params:`#!gd index:int`
 
 Use it when [is_waiting_menu_return] return `true`, to continue script reading process.
 
-`index` is the index of choosed choice in the choices array given by [sg_menu].
+`index` is the index of chosen choice in the choices array given by [sg_menu].
 
 [Say]: rakuscript.md##say
 [do_step]: ##do_step
