@@ -1167,7 +1167,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 </code></pre></div>
 <h4 id="sg_ask">sg_ask</h4>
 <p>args: (character:Dictionary, question:String, default_answer:String)</p>
-<p>Send when a <a href="../rakuscript/#ask">Ask</a> instruction is executed then Rakugo waiting call of <a href="../rakuscript/#ask_return">ask_return</a>.</p>
+<p>Send when a <a href="../rakuscript/#ask">Ask</a> instruction is executed then Rakugo waiting call of <a href="#ask_return">ask_return</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_ask</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_ask</span><span class="p">)</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -1176,7 +1176,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 </code></pre></div>
 <h4 id="sg_menu">sg_menu</h4>
 <p>args: (choices:Array)</p>
-<p>Send when a <a href="../rakuscript/#menu">Menu</a> instruction is executed then Rakugo waiting call of <a href="../rakuscript/#menu_return">menu_return</a>.</p>
+<p>Send when a <a href="../rakuscript/#menu">Menu</a> instruction is executed then Rakugo waiting call of <a href="#menu_return">menu_return</a>.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_menu</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_menu</span><span class="p">)</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -1333,14 +1333,14 @@ return: Error</p>
 <p>Use it when <a href="#is_waiting_step">is_waiting_step</a> return <code>true</code>, to continue script reading process.</p>
 <h4 id="is_waiting_ask_return">is_waiting_ask_return</h4>
 <p>return: bool</p>
-<p>Returns <code>true</code> when Rakugo waiting call of <a href="../rakuscript/#ask_return">ask_return</a>.</p>
+<p>Returns <code>true</code> when Rakugo waiting call of <a href="#ask_return">ask_return</a>.</p>
 <h4 id="ask_return">ask_return</h4>
 <p>params: (result:Variant)</p>
 <p>Use it when <a href="#is_waiting_ask_return">is_waiting_ask_return</a> return <code>true</code>, to continue script reading process.</p>
 <p><code>result</code> is the answer to the question ask by <a href="#sg_ask">sg_ask</a>.</p>
 <h4 id="is_waiting_menu_return">is_waiting_menu_return</h4>
 <p>return: bool</p>
-<p>Returns <code>true</code> when Rakugo waiting call of <a href="../rakuscript/#menu_return">menu_return</a>.</p>
+<p>Returns <code>true</code> when Rakugo waiting call of <a href="#menu_return">menu_return</a>.</p>
 <h4 id="menu_return">menu_return</h4>
 <p>params: (index:int)</p>
 <p>Use it when <a href="#is_waiting_menu_return">is_waiting_menu_return</a> return <code>true</code>, to continue script reading process.</p>
