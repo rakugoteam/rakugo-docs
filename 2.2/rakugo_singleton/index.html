@@ -1189,7 +1189,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <ul>
 <li>args:<code class="language-gd highlight"><span class="n">character</span><span class="p">:</span><span class="nb nb-Type">Dictionary</span><span class="p">,</span><span class="w"> </span><span class="n">question</span><span class="p">:</span><span class="nb nb-Type">String</span><span class="p">,</span><span class="w"> </span><span class="n">default_answer</span><span class="p">:</span><span class="nb nb-Type">String</span></code></li>
 </ul>
-<p>Send when a <a href="../rakuscript/#ask">Ask</a> instruction is executed then Rakugo waiting call of <a href="../rakuscript/#ask_return">ask_return</a>.</p>
+<p>Send when a <a href="../rakuscript/#ask">Ask</a> instruction is executed then Rakugo waiting call of <a href="#ask_return">ask_return</a>.</p>
 <div class="language-gd highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_ask</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_ask</span><span class="p">)</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
@@ -1200,7 +1200,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <ul>
 <li>args:<code class="language-gd highlight"><span class="n">choices</span><span class="p">:</span><span class="nb nb-Type">Array</span></code></li>
 </ul>
-<p>Send when a <a href="../rakuscript/#menu">Menu</a> instruction is executed then Rakugo waiting call of <a href="../rakuscript/#menu_return">menu_return</a>.</p>
+<p>Send when a <a href="../rakuscript/#menu">Menu</a> instruction is executed then Rakugo waiting call of <a href="#menu_return">menu_return</a>.</p>
 <div class="language-gd highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">func</span><span class="w"> </span><span class="n">_ready</span><span class="p">():</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="n">Rakugo</span><span class="o">.</span><span class="n">sg_menu</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_menu</span><span class="p">)</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
@@ -1407,7 +1407,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <ul>
 <li>return:<code class="language-gdscript highlight"><span class="nb nb-Type">bool</span></code></li>
 </ul>
-<p>Returns <code>true</code> when Rakugo waiting call of <a href="../rakuscript/#ask_return">ask_return</a>.</p>
+<p>Returns <code>true</code> when Rakugo waiting call of <a href="#ask_return">ask_return</a>.</p>
 <h4 id="ask_return">ask_return</h4>
 <ul>
 <li>params:<code class="language-gd highlight"><span class="n">result</span><span class="p">:</span><span class="n">Variant</span></code></li>
@@ -1418,7 +1418,7 @@ This means that you can call Rakugo from anywhere in your code.</p>
 <ul>
 <li>return:<code class="language-gdscript highlight"><span class="nb nb-Type">bool</span></code></li>
 </ul>
-<p>Returns <code>true</code> when Rakugo waiting call of <a href="../rakuscript/#menu_return">menu_return</a>.</p>
+<p>Returns <code>true</code> when Rakugo waiting call of <a href="#menu_return">menu_return</a>.</p>
 <h4 id="menu_return">menu_return</h4>
 <ul>
 <li>params:<code class="language-gd highlight"><span class="n">index</span><span class="p">:</span><span class="nb nb-Type">int</span></code></li>
